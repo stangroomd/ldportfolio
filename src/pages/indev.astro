@@ -1,5 +1,5 @@
 ---
-const title = "Coming Soon";
+const title = "Stangroom | Lighting • Power • Systems";
 ---
 
 <!DOCTYPE html>
@@ -15,7 +15,6 @@ const title = "Coming Soon";
         --text: #eaeaf0;
         --muted: #9aa0a6;
 
-        /* Accent colours */
         --accent1: #7c5cff;
         --accent2: #00d4ff;
         --accent3: #ff4ecd;
@@ -27,26 +26,25 @@ const title = "Coming Soon";
         padding: 0;
       }
 
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        background: radial-gradient(circle at 20% 20%, #15172b, var(--bg));
-        color: var(--text);
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+      html {
+        scroll-behavior: smooth;
       }
 
-      /* Soft animated blobs */
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      /* Background glow */
       .blob {
-        position: absolute;
+        position: fixed;
         width: 500px;
         height: 500px;
         border-radius: 50%;
         filter: blur(120px);
-        opacity: 0.5;
-        animation: float 20s infinite ease-in-out alternate;
+        opacity: 0.35;
+        z-index: 0;
       }
 
       .blob.one {
@@ -59,38 +57,103 @@ const title = "Coming Soon";
         background: var(--accent2);
         bottom: -150px;
         right: -100px;
-        animation-delay: 5s;
       }
 
       .blob.three {
         background: var(--accent3);
-        top: 40%;
+        top: 50%;
         left: 60%;
-        animation-delay: 10s;
       }
 
-      @keyframes float {
-        from {
-          transform: translateY(0px) translateX(0px) scale(1);
-        }
-        to {
-          transform: translateY(50px) translateX(-50px) scale(1.1);
-        }
-      }
-
-      .container {
+      main {
         position: relative;
-        z-index: 10;
-        text-align: center;
-        padding: 2rem;
-        max-width: 700px;
+        z-index: 1;
       }
 
-      h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 700;
+      /* GRID */
+      .grid {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .grid-top {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-bottom {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (max-width: 700px) {
+        .grid-bottom {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* TILE */
+      .tile {
+        position: relative;
+        height: 280px;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+
+        background-size: cover;
+        background-position: center;
+
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85),
+          rgba(0, 0, 0, 0.2)
+        );
+      }
+
+      /* Discipline colour tints */
+      .tile.lighting::after {
+        background: linear-gradient(
+          to top,
+          rgba(124, 92, 255, 0.6),
+          rgba(0, 0, 0, 0.2)
+        );
+      }
+
+      .tile.power::after {
+        background: linear-gradient(
+          to top,
+          rgba(0, 212, 255, 0.6),
+          rgba(0, 0, 0, 0.2)
+        );
+      }
+
+      .tile.systems::after {
+        background: linear-gradient(
+          to top,
+          rgba(255, 78, 205, 0.6),
+          rgba(0, 0, 0, 0.2)
+        );
+      }
+
+      .tile:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      .tile h2 {
+        position: relative;
+        z-index: 2;
+        font-size: 2rem;
         letter-spacing: -0.02em;
-        margin-bottom: 1rem;
 
         background: linear-gradient(
           90deg,
@@ -102,16 +165,28 @@ const title = "Coming Soon";
         -webkit-text-fill-color: transparent;
       }
 
-      p {
+      /* SECTIONS */
+      section {
+        padding: 5rem 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+
+      section p {
         color: var(--muted);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+        line-height: 1.7;
+        font-size: 1.05rem;
       }
 
       .divider {
         width: 60px;
         height: 4px;
-        margin: 1.5rem auto;
+        margin: 1rem 0 2rem;
         background: linear-gradient(
           90deg,
           var(--accent1),
@@ -119,22 +194,6 @@ const title = "Coming Soon";
           var(--accent3)
         );
         border-radius: 2px;
-      }
-
-      .footer {
-        font-size: 0.9rem;
-        color: var(--muted);
-        margin-top: 2rem;
-        opacity: 0.7;
-      }
-
-      a {
-        color: var(--accent2);
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
       }
     </style>
   </head>
@@ -145,22 +204,67 @@ const title = "Coming Soon";
     <div class="blob two"></div>
     <div class="blob three"></div>
 
-    <main class="container">
-      <h1>Coming Soon</h1>
-      <div class="divider"></div>
-
-      <p>
-        A new version of this site is currently in development.<br />
-        Something fresh, fast, and a little bit different is on the way.
-      </p>
-
-      <p>
-        Check back soon or follow along for updates.
-      </p>
-
-      <div class="footer">
-        &copy; {new Date().getFullYear()} stangroom.uk
+    <main>
+      <!-- LIGHTING -->
+      <div class="grid grid-top">
+        <a
+          href="#lighting"
+          class="tile lighting"
+          style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600');"
+        >
+          <h2>Lighting</h2>
+        </a>
       </div>
+
+      <!-- POWER + SYSTEMS -->
+      <div class="grid grid-bottom">
+        <a
+          href="#power"
+          class="tile power"
+          style="background-image: url('https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?q=80&w=1200');"
+        >
+          <h2>Power</h2>
+        </a>
+
+        <a
+          href="#systems"
+          class="tile systems"
+          style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200');"
+        >
+          <h2>Systems</h2>
+        </a>
+      </div>
+
+      <!-- SECTIONS -->
+      <section id="lighting">
+        <h2>Lighting</h2>
+        <div class="divider"></div>
+        <p>
+          Lighting design and operation for live events, film, and broadcast.
+          From rigging and programming to show execution, delivering precise,
+          dynamic, and visually impactful results.
+        </p>
+      </section>
+
+      <section id="power">
+        <h2>Power</h2>
+        <div class="divider"></div>
+        <p>
+          Temporary power solutions including generation, distribution, and
+          load management. Clean, safe, and reliable systems built for demanding
+          production environments.
+        </p>
+      </section>
+
+      <section id="systems">
+        <h2>Systems</h2>
+        <div class="divider"></div>
+        <p>
+          Integration of audio, RF, and control systems. From stageboxes to
+          complex signal workflows, ensuring everything connects and performs
+          seamlessly under pressure.
+        </p>
+      </section>
     </main>
   </body>
 </html>
