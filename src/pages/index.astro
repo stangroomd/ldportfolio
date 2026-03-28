@@ -1,5 +1,5 @@
 ---
-const title = "Coming Soon";
+const title = "Services";
 ---
 
 <!DOCTYPE html>
@@ -15,7 +15,6 @@ const title = "Coming Soon";
         --text: #eaeaf0;
         --muted: #9aa0a6;
 
-        /* Accent colours */
         --accent1: #7c5cff;
         --accent2: #00d4ff;
         --accent3: #ff4ecd;
@@ -27,26 +26,25 @@ const title = "Coming Soon";
         padding: 0;
       }
 
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        background: radial-gradient(circle at 20% 20%, #15172b, var(--bg));
-        color: var(--text);
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+      html {
+        scroll-behavior: smooth;
       }
 
-      /* Soft animated blobs */
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      /* Background glow */
       .blob {
-        position: absolute;
+        position: fixed;
         width: 500px;
         height: 500px;
         border-radius: 50%;
         filter: blur(120px);
-        opacity: 0.5;
-        animation: float 20s infinite ease-in-out alternate;
+        opacity: 0.4;
+        z-index: 0;
       }
 
       .blob.one {
@@ -59,38 +57,76 @@ const title = "Coming Soon";
         background: var(--accent2);
         bottom: -150px;
         right: -100px;
-        animation-delay: 5s;
       }
 
       .blob.three {
         background: var(--accent3);
-        top: 40%;
+        top: 50%;
         left: 60%;
-        animation-delay: 10s;
       }
 
-      @keyframes float {
-        from {
-          transform: translateY(0px) translateX(0px) scale(1);
-        }
-        to {
-          transform: translateY(50px) translateX(-50px) scale(1.1);
-        }
-      }
-
-      .container {
+      main {
         position: relative;
-        z-index: 10;
-        text-align: center;
-        padding: 2rem;
-        max-width: 700px;
+        z-index: 1;
       }
 
-      h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin-bottom: 1rem;
+      /* GRID */
+      .grid {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .grid-top {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-bottom {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (max-width: 700px) {
+        .grid-bottom {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* TILE */
+      .tile {
+        position: relative;
+        height: 260px;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0.2)
+        );
+      }
+
+      .tile:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .tile h2 {
+        position: relative;
+        z-index: 2;
+        font-size: 1.8rem;
 
         background: linear-gradient(
           90deg,
@@ -102,16 +138,27 @@ const title = "Coming Soon";
         -webkit-text-fill-color: transparent;
       }
 
-      p {
+      /* SECTIONS */
+      section {
+        padding: 4rem 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      section p {
         color: var(--muted);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+        line-height: 1.6;
       }
 
       .divider {
         width: 60px;
         height: 4px;
-        margin: 1.5rem auto;
+        margin: 1rem 0 2rem;
         background: linear-gradient(
           90deg,
           var(--accent1),
@@ -120,47 +167,65 @@ const title = "Coming Soon";
         );
         border-radius: 2px;
       }
-
-      .footer {
-        font-size: 0.9rem;
-        color: var(--muted);
-        margin-top: 2rem;
-        opacity: 0.7;
-      }
-
-      a {
-        color: var(--accent2);
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
     </style>
   </head>
 
   <body>
-    <!-- Background blobs -->
+    <!-- Background -->
     <div class="blob one"></div>
     <div class="blob two"></div>
     <div class="blob three"></div>
 
-    <main class="container">
-      <h1>Coming Soon</h1>
-      <div class="divider"></div>
-
-      <p>
-        A new version of this site is currently in development.<br />
-        Something fresh, fast, and a little bit different is on the way.
-      </p>
-
-      <p>
-        Check back soon or follow along for updates.
-      </p>
-
-      <div class="footer">
-        &copy; {new Date().getFullYear()} stangroom.uk
+    <main>
+      <!-- TOP FULL WIDTH -->
+      <div class="grid grid-top">
+        <a href="#lighting" class="tile" style="background-image: url('https://images.unsplash.com/photo-1507477338202-487281e6c27e');">
+          <h2>Lighting</h2>
+        </a>
       </div>
+
+      <!-- TWO BELOW -->
+      <div class="grid grid-bottom">
+        <a href="#power" class="tile" style="background-image: url('https://images.unsplash.com/photo-1581090700227-1e8e8e3d06b6');">
+          <h2>Power</h2>
+        </a>
+
+        <a href="#systems" class="tile" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f');">
+          <h2>Systems</h2>
+        </a>
+      </div>
+
+      <!-- SECTIONS -->
+      <section id="lighting">
+        <h2>Lighting</h2>
+        <div class="divider"></div>
+        <p>
+          From architectural lighting design to practical installations,
+          we create lighting solutions that enhance both aesthetics and
+          functionality. Whether it's ambient mood lighting or precision task
+          lighting, everything is tailored to your space.
+        </p>
+      </section>
+
+      <section id="power">
+        <h2>Power</h2>
+        <div class="divider"></div>
+        <p>
+          Reliable and efficient power systems designed for modern demands.
+          From domestic upgrades to full-scale distribution solutions,
+          safety, compliance, and performance are always at the core.
+        </p>
+      </section>
+
+      <section id="systems">
+        <h2>Systems</h2>
+        <div class="divider"></div>
+        <p>
+          Smart systems integration including automation, control, and
+          monitoring. Bringing together technology and usability to create
+          seamless environments for work or home.
+        </p>
+      </section>
     </main>
   </body>
 </html>
