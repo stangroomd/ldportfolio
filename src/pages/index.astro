@@ -1,50 +1,166 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+const title = "Coming Soon";
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut2!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
+        --muted: #9aa0a6;
+
+        /* Accent colours */
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: radial-gradient(circle at 20% 20%, #15172b, var(--bg));
+        color: var(--text);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      /* Soft animated blobs */
+      .blob {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.5;
+        animation: float 20s infinite ease-in-out alternate;
+      }
+
+      .blob.one {
+        background: var(--accent1);
+        top: -100px;
+        left: -100px;
+      }
+
+      .blob.two {
+        background: var(--accent2);
+        bottom: -150px;
+        right: -100px;
+        animation-delay: 5s;
+      }
+
+      .blob.three {
+        background: var(--accent3);
+        top: 40%;
+        left: 60%;
+        animation-delay: 10s;
+      }
+
+      @keyframes float {
+        from {
+          transform: translateY(0px) translateX(0px) scale(1);
+        }
+        to {
+          transform: translateY(50px) translateX(-50px) scale(1.1);
+        }
+      }
+
+      .container {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 2rem;
+        max-width: 700px;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+
+        background: linear-gradient(
+          90deg,
+          var(--accent1),
+          var(--accent2),
+          var(--accent3)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .divider {
+        width: 60px;
+        height: 4px;
+        margin: 1.5rem auto;
+        background: linear-gradient(
+          90deg,
+          var(--accent1),
+          var(--accent2),
+          var(--accent3)
+        );
+        border-radius: 2px;
+      }
+
+      .footer {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 2rem;
+        opacity: 0.7;
+      }
+
+      a {
+        color: var(--accent2);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Background blobs -->
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+    <main class="container">
+      <h1>Coming Soon</h1>
+      <div class="divider"></div>
+
+      <p>
+        A new version of this site is currently in development.<br />
+        Something fresh, fast, and a little bit different is on the way.
+      </p>
+
+      <p>
+        Check back soon or follow along for updates.
+      </p>
+
+      <div class="footer">
+        &copy; {new Date().getFullYear()} stangroom.uk
+      </div>
+    </main>
+  </body>
 </html>
