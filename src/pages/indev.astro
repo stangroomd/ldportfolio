@@ -43,7 +43,7 @@ const title = "Stangroom | Lighting • Power • Systems";
         height: 500px;
         border-radius: 50%;
         filter: blur(120px);
-        opacity: 0.35;
+        opacity: 0.3;
         z-index: 0;
       }
 
@@ -70,42 +70,20 @@ const title = "Stangroom | Lighting • Power • Systems";
         z-index: 1;
       }
 
-      /* GRID */
-      .grid {
-        display: grid;
-        gap: 1rem;
-        padding: 1rem;
-      }
-
-      .grid-top {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-bottom {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      @media (max-width: 700px) {
-        .grid-bottom {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* TILE */
+      /* TILE BASE */
       .tile {
         position: relative;
-        height: 280px;
-        border-radius: 20px;
-        overflow: hidden;
-        cursor: pointer;
+        width: 100%;
+        height: 100vh;
         display: flex;
         align-items: flex-end;
-        padding: 1.5rem;
+        padding: 3rem;
+        text-decoration: none;
 
         background-size: cover;
         background-position: center;
 
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.4s ease;
       }
 
       .tile::after {
@@ -119,11 +97,11 @@ const title = "Stangroom | Lighting • Power • Systems";
         );
       }
 
-      /* Discipline colour tints */
+      /* Colour tints */
       .tile.lighting::after {
         background: linear-gradient(
           to top,
-          rgba(124, 92, 255, 0.6),
+          rgba(124, 92, 255, 0.5),
           rgba(0, 0, 0, 0.2)
         );
       }
@@ -131,7 +109,7 @@ const title = "Stangroom | Lighting • Power • Systems";
       .tile.power::after {
         background: linear-gradient(
           to top,
-          rgba(0, 212, 255, 0.6),
+          rgba(0, 212, 255, 0.5),
           rgba(0, 0, 0, 0.2)
         );
       }
@@ -139,20 +117,21 @@ const title = "Stangroom | Lighting • Power • Systems";
       .tile.systems::after {
         background: linear-gradient(
           to top,
-          rgba(255, 78, 205, 0.6),
+          rgba(255, 78, 205, 0.5),
           rgba(0, 0, 0, 0.2)
         );
       }
 
       .tile:hover {
-        transform: translateY(-6px) scale(1.01);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        transform: scale(1.01);
       }
 
+      .tile h1,
       .tile h2 {
         position: relative;
         z-index: 2;
-        font-size: 2rem;
+
+        font-size: clamp(2.5rem, 6vw, 4rem);
         letter-spacing: -0.02em;
 
         background: linear-gradient(
@@ -165,9 +144,26 @@ const title = "Stangroom | Lighting • Power • Systems";
         -webkit-text-fill-color: transparent;
       }
 
+      /* SPLIT ROW */
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (max-width: 800px) {
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .tile {
+          height: 70vh;
+        }
+      }
+
       /* SECTIONS */
       section {
-        padding: 5rem 1.5rem;
+        min-height: 100vh;
+        padding: 5rem 2rem;
         max-width: 900px;
         margin: 0 auto;
       }
@@ -180,7 +176,6 @@ const title = "Stangroom | Lighting • Power • Systems";
       section p {
         color: var(--muted);
         line-height: 1.7;
-        font-size: 1.05rem;
       }
 
       .divider {
@@ -193,31 +188,43 @@ const title = "Stangroom | Lighting • Power • Systems";
           var(--accent2),
           var(--accent3)
         );
-        border-radius: 2px;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+      }
+
+      footer h3 {
+        margin-bottom: 1rem;
+      }
+
+      footer p {
+        color: var(--muted);
       }
     </style>
   </head>
 
   <body>
-    <!-- Background blobs -->
+    <!-- Background -->
     <div class="blob one"></div>
     <div class="blob two"></div>
     <div class="blob three"></div>
 
     <main>
-      <!-- LIGHTING -->
-      <div class="grid grid-top">
-        <a
-          href="#lighting"
-          class="tile lighting"
-          style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600');"
-        >
-          <h2>Lighting</h2>
-        </a>
-      </div>
+      <!-- LIGHTING HERO -->
+      <a
+        href="#lighting"
+        class="tile lighting"
+        style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600');"
+      >
+        <h1>Lighting</h1>
+      </a>
 
       <!-- POWER + SYSTEMS -->
-      <div class="grid grid-bottom">
+      <div class="split">
         <a
           href="#power"
           class="tile power"
@@ -265,6 +272,16 @@ const title = "Stangroom | Lighting • Power • Systems";
           seamlessly under pressure.
         </p>
       </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <h3>Contact</h3>
+        <p>
+          Email: enquiries@stangroom.uk<br />
+          Phone: +44 (0)1483 342 447<br />
+          Based in the UK — available for live events, film & broadcast
+        </p>
+      </footer>
     </main>
   </body>
 </html>
