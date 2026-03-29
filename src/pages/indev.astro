@@ -70,14 +70,20 @@ const title = "Stangroom | Lighting • Power • Systems";
         z-index: 1;
       }
 
+      /* HERO GRID (FULL SCREEN) */
+      .hero {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 3fr 2fr; /* 60% / 40% split */
+      }
+
       /* TILE BASE */
       .tile {
         position: relative;
         width: 100%;
-        height: 100vh;
         display: flex;
         align-items: flex-end;
-        padding: 3rem;
+        padding: 2.5rem;
         text-decoration: none;
 
         background-size: cover;
@@ -131,7 +137,7 @@ const title = "Stangroom | Lighting • Power • Systems";
         position: relative;
         z-index: 2;
 
-        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-size: clamp(2rem, 4vw, 3.5rem);
         letter-spacing: -0.02em;
 
         background: linear-gradient(
@@ -144,19 +150,19 @@ const title = "Stangroom | Lighting • Power • Systems";
         -webkit-text-fill-color: transparent;
       }
 
-      /* SPLIT ROW */
-      .split {
+      /* BOTTOM SPLIT */
+      .bottom {
         display: grid;
         grid-template-columns: 1fr 1fr;
       }
 
       @media (max-width: 800px) {
-        .split {
-          grid-template-columns: 1fr;
+        .hero {
+          grid-template-rows: 1fr 1fr;
         }
 
-        .tile {
-          height: 70vh;
+        .bottom {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -214,32 +220,35 @@ const title = "Stangroom | Lighting • Power • Systems";
     <div class="blob three"></div>
 
     <main>
-      <!-- LIGHTING HERO -->
-      <a
-        href="#lighting"
-        class="tile lighting"
-        style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600');"
-      >
-        <h1>Lighting</h1>
-      </a>
-
-      <!-- POWER + SYSTEMS -->
-      <div class="split">
+      <!-- HERO (ALL THREE VISIBLE) -->
+      <div class="hero">
+        <!-- LIGHTING -->
         <a
-          href="#power"
-          class="tile power"
-          style="background-image: url('https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?q=80&w=1200');"
+          href="#lighting"
+          class="tile lighting"
+          style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600');"
         >
-          <h2>Power</h2>
+          <h1>Lighting</h1>
         </a>
 
-        <a
-          href="#systems"
-          class="tile systems"
-          style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200');"
-        >
-          <h2>Systems</h2>
-        </a>
+        <!-- POWER + SYSTEMS -->
+        <div class="bottom">
+          <a
+            href="#power"
+            class="tile power"
+            style="background-image: url('https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?q=80&w=1200');"
+          >
+            <h2>Power</h2>
+          </a>
+
+          <a
+            href="#systems"
+            class="tile systems"
+            style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200');"
+          >
+            <h2>Systems</h2>
+          </a>
+        </div>
       </div>
 
       <!-- SECTIONS -->
