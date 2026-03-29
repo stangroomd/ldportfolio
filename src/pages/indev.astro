@@ -13,7 +13,200 @@ const title = "Stangroom | Lighting • Power • Systems";
       :root {
         --bg: #0b0c10;
         --text: #eaeaf0;
+        --muted: #9aa0a6;---
+const title = "Stangroom | Lighting • Power • Systems";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
         --muted: #9aa0a6;
+
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      /* Background glow */
+      .blob {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
+      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
+      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
+
+      main { position: relative; z-index: 1; }
+
+      /* HERO GRID */
+      .hero { height: 100vh; display: grid; grid-template-rows: 3fr 2fr; }
+
+      /* TILE BASE */
+      .tile {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        padding: 2.5rem;
+        text-decoration: none;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.4s ease;
+      }
+
+      .tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+      }
+
+      /* Colour tints */
+      .tile.lighting::after { background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2)); }
+      .tile.power::after { background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2)); }
+      .tile.systems::after { background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2)); }
+
+      .tile:hover { transform: scale(1.01); }
+
+      /* TILE HEADINGS */
+      .tile h1,
+      .tile h2 {
+        position: relative;
+        z-index: 2;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        letter-spacing: -0.02em;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* STRONG DROP SHADOW */
+      .tile h1::after,
+      .tile h2::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        color: rgba(0,0,0,0.8);
+        filter: blur(8px);
+        white-space: pre;
+      }
+
+      /* Optionally, add multiple shadows for extra depth */
+      .tile h1,
+      .tile h2 {
+        text-shadow:
+          2px 2px 2px rgba(0,0,0,0.5),
+          4px 4px 6px rgba(0,0,0,0.6);
+      }
+
+      /* BOTTOM SPLIT */
+      .bottom { display: grid; grid-template-columns: 1fr 1fr; }
+
+      @media (max-width: 800px) {
+        .hero { grid-template-rows: 1fr 1fr; }
+        .bottom { grid-template-columns: 1fr; }
+      }
+
+      /* SECTIONS */
+      section { min-height: 100vh; padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+      section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+      section p { color: var(--muted); line-height: 1.7; }
+      .divider { width: 60px; height: 4px; margin: 1rem 0 2rem; background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3)); }
+
+      /* FOOTER */
+      footer { padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+      footer h3 { margin-bottom: 1rem; }
+      footer p { color: var(--muted); }
+    </style>
+  </head>
+
+  <body>
+    <!-- Background -->
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+    <main>
+      <!-- HERO -->
+      <div class="hero">
+        <!-- LIGHTING -->
+        <a href="#lighting" class="tile lighting" style="background-image: url('/images/lighting.png');">
+          <h1 data-text="Lighting">Lighting</h1>
+        </a>
+
+        <!-- POWER + SYSTEMS -->
+        <div class="bottom">
+          <a href="#power" class="tile power" style="background-image: url('https://images.openai.com/static-rsc-4/Z6-2wMI0_rdfCV63UWBVQ8pUT9rL6uiZbR2NpGsVlri-B8au_UWWExVDxCFrJo8zBNH9rXWJPJO1U8rVo4_l8rSu8VtdpB5dybe54LbJUiDC11KSS1zvgTsYJ42s0onuBTl85dbBNDz-YEiyQaFB1zDRrT7R3vMMqTViQGULNQSpVa9o1bSgUvgvntVl_7L2?purpose=fullsize');">
+            <h2 data-text="Power">Power</h2>
+          </a>
+
+          <a href="#systems" class="tile systems" style="background-image: url('https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg');">
+            <h2 data-text="Systems">Systems</h2>
+          </a>
+        </div>
+      </div>
+
+      <!-- SECTIONS -->
+      <section id="lighting">
+        <h2>Lighting</h2>
+        <div class="divider"></div>
+        <p>Lighting design and operation for live events, film, and broadcast. From rigging and programming to show execution, delivering precise, dynamic, and visually impactful results.</p>
+      </section>
+
+      <section id="power">
+        <h2>Power</h2>
+        <div class="divider"></div>
+        <p>Temporary power solutions including generation, distribution, and load management. Clean, safe, and reliable systems built for demanding production environments.</p>
+      </section>
+
+      <section id="systems">
+        <h2>Systems</h2>
+        <div class="divider"></div>
+        <p>Integration of audio, RF, and control systems. From stageboxes to complex signal workflows, ensuring everything connects and performs seamlessly under pressure.</p>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <h3>Contact</h3>
+        <p>Email: enquiries@stangroom.uk<br />
+           Phone: +44 (0)1483 342 447<br />
+           Based in the UK — available for live events, film & broadcast</p>
+      </footer>
+    </main>
+  </body>
+</html>
 
         --accent1: #7c5cff;
         --accent2: #00d4ff;
