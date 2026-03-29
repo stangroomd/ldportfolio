@@ -132,6 +132,7 @@ const title = "Stangroom | Lighting • Power • Systems";
         transform: scale(1.01);
       }
 
+      /* TILE HEADINGS */
       .tile h1,
       .tile h2 {
         position: relative;
@@ -148,6 +149,19 @@ const title = "Stangroom | Lighting • Power • Systems";
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      /* Drop shadow for gradient text */
+      .tile h1::after,
+      .tile h2::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        color: rgba(0, 0, 0, 0.6);
+        filter: blur(4px);
+        white-space: pre;
       }
 
       /* BOTTOM SPLIT */
@@ -228,7 +242,7 @@ const title = "Stangroom | Lighting • Power • Systems";
           class="tile lighting"
           style="background-image: url('/images/lighting.png');"
         >
-          <h1>Lighting</h1>
+          <h1 data-text="Lighting">Lighting</h1>
         </a>
 
         <!-- POWER + SYSTEMS -->
@@ -236,17 +250,17 @@ const title = "Stangroom | Lighting • Power • Systems";
           <a
             href="#power"
             class="tile power"
-            style="background-image: url('https://images.openai.com/static-rsc-4/Z6-2wMI0_rdfCV63UWBVQ8pUT9rL6uiZbR2NpGsVlri-B8au_UWWExVDxCFrJo8zBNH9rXWJPJO1U8rVo4_l8rSu8VtdpB5dybe54LbJUiDC11KSS1zvgTsYJ42s0onuBTl85dbBNDz-YEiyQaFB1zDRrT7R3vMMqTViQGULNQSpVa9o1bSgUvgvntVl_7L2?purpose=fullsize');"
+            style="background-image: url('/images/power.png');"
           >
-            <h2>Power</h2>
+            <h2 data-text="Power">Power</h2>
           </a>
 
           <a
             href="#systems"
             class="tile systems"
-            style="background-image: url('https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg');"
+            style="background-image: url('/images/systems.png');"
           >
-            <h2>Systems</h2>
+            <h2 data-text="Systems">Systems</h2>
           </a>
         </div>
       </div>
