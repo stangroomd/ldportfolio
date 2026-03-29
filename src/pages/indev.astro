@@ -83,26 +83,30 @@ const title = "Stangroom | Lighting • Power • Systems";
 
       .tile:hover { transform: scale(1.01); }
 
-      /* TILE HEADINGS */
-      .tile h1,
-      .tile h2 {
+      /* TWO-LAYER TEXT WITH SHADOW BEHIND */
+      .title-wrapper {
         position: relative;
-        z-index: 2;
         font-size: clamp(2rem, 4vw, 3.5rem);
-        letter-spacing: -0.02em;
-
-        /* Drop shadow on the h1/h2 to appear behind the gradient span */
-        text-shadow:
-          2px 2px 2px rgba(0,0,0,0.7),
-          4px 4px 6px rgba(0,0,0,0.6),
-          6px 6px 8px rgba(0,0,0,0.5);
+        line-height: 1;
       }
 
-      .tile h1 span,
-      .tile h2 span {
+      .title-shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: rgba(0,0,0,0.7);
+        filter: blur(8px);
+        z-index: 1;
+        white-space: nowrap;
+      }
+
+      .title-gradient {
+        position: relative;
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        z-index: 2;
+        white-space: nowrap;
       }
 
       /* BOTTOM SPLIT */
@@ -137,17 +141,26 @@ const title = "Stangroom | Lighting • Power • Systems";
       <div class="hero">
         <!-- LIGHTING -->
         <a href="#lighting" class="tile lighting" style="background-image: url('/images/lighting.png');">
-          <h1><span>Lighting</span></h1>
+          <h1 class="title-wrapper">
+            <span class="title-shadow">Lighting</span>
+            <span class="title-gradient">Lighting</span>
+          </h1>
         </a>
 
         <!-- POWER + SYSTEMS -->
         <div class="bottom">
           <a href="#power" class="tile power" style="background-image: url('https://images.openai.com/static-rsc-4/Z6-2wMI0_rdfCV63UWBVQ8pUT9rL6uiZbR2NpGsVlri-B8au_UWWExVDxCFrJo8zBNH9rXWJPJO1U8rVo4_l8rSu8VtdpB5dybe54LbJUiDC11KSS1zvgTsYJ42s0onuBTl85dbBNDz-YEiyQaFB1zDRrT7R3vMMqTViQGULNQSpVa9o1bSgUvgvntVl_7L2?purpose=fullsize');">
-            <h2><span>Power</span></h2>
+            <h2 class="title-wrapper">
+              <span class="title-shadow">Power</span>
+              <span class="title-gradient">Power</span>
+            </h2>
           </a>
 
           <a href="#systems" class="tile systems" style="background-image: url('https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg');">
-            <h2><span>Systems</span></h2>
+            <h2 class="title-wrapper">
+              <span class="title-shadow">Systems</span>
+              <span class="title-gradient">Systems</span>
+            </h2>
           </a>
         </div>
       </div>
