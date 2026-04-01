@@ -4,242 +4,150 @@ const title = "Stangroom | Lighting • Power • Systems";
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
 
-    <style>
-      :root {
-        --bg: #0b0c10;
-        --text: #eaeaf0;
-        --muted: #9aa0a6;
+<style>
+:root {
+  --bg:#0b0c10;
+  --text:#eaeaf0;
+  --muted:#9aa0a6;
+  --accent1:#7c5cff;
+  --accent2:#00d4ff;
+  --accent3:#ff4ecd;
+}
 
-        --accent1: #7c5cff;
-        --accent2: #00d4ff;
-        --accent3: #ff4ecd;
-      }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:system-ui;background:var(--bg);color:var(--text);}
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+/* NAVBAR */
+nav {
+  position: fixed;
+  top:0;
+  width:100%;
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index:100;
+}
 
-      html {
-        scroll-behavior: smooth;
-      }
+.nav-links {
+  display:flex;
+  gap:2rem;
+}
 
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
+.nav-links a {
+  text-decoration:none;
+  color:var(--text);
+  font-size:0.95rem;
+  opacity:0.8;
+  transition:0.2s;
+}
 
-      /* Background blobs */
-      .blob {
-        position: fixed;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.3;
-        z-index: 0;
-      }
+.nav-links a:hover { opacity:1; }
 
-      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
-      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
-      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
+/* HERO */
+.hero {
+  height:100vh;
+  display:grid;
+  grid-template-rows:3fr 2fr;
+  margin-top:60px;
+}
 
-      main { position: relative; z-index: 1; }
+.tile {
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:2.5rem;
+  background-size:cover;
+  background-position:center;
+  text-decoration:none;
+}
 
-      /* HERO GRID */
-      .hero { height: 100vh; display: grid; grid-template-rows: 3fr 2fr; }
+.tile::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+}
 
-      /* TILE BASE */
-      .tile {
-        position: relative;
-        width: 100%;
-        display: flex;
-        align-items: flex-end;
-        padding: 2.5rem;
-        text-decoration: none;
-        background-size: cover;
-        background-position: center;
-        transition: transform 0.4s ease;
-      }
+.bottom { display:grid; grid-template-columns:1fr 1fr; }
 
-      .tile::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
-      }
+/* TEXT */
+.title-wrapper { position:relative; font-size:3rem; }
 
-      /* Colour tints */
-      .tile.lighting::after { background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2)); }
-      .tile.power::after { background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2)); }
-      .tile.systems::after { background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2)); }
+.title-shadow {
+  position:absolute;
+  top:0; left:0;
+  color:black;
+  filter:blur(8px);
+  z-index:1;
+}
 
-      .tile:hover { transform: scale(1.01); }
+.title-gradient {
+  position:relative;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  z-index:2;
+}
 
-      /* TWO-LAYER TEXT WITH SHADOW BEHIND */
-      .title-wrapper {
-        position: relative;
-        font-size: clamp(2rem, 4vw, 3.5rem);
-        line-height: 1;
-      }
+/* SECTIONS */
+section { padding:5rem 2rem; max-width:900px; margin:auto; }
+section p { color:var(--muted); margin-top:1rem; }
+ul { margin-top:1rem; line-height:1.6; }
 
-      .title-shadow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: rgba(0,0,0,0.7);
-        filter: blur(8px);
-        z-index: 1;
-        white-space: nowrap;
-      }
+footer { padding:3rem; text-align:center; border-top:1px solid #222; }
 
-      .title-gradient {
-        position: relative;
-        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        z-index: 2;
-        white-space: nowrap;
-      }
+</style>
+</head>
 
-      /* BOTTOM SPLIT */
-      .bottom { display: grid; grid-template-columns: 1fr 1fr; }
+<body>
 
-      @media (max-width: 800px) {
-        .hero { grid-template-rows: 1fr 1fr; }
-        .bottom { grid-template-columns: 1fr; }
-      }
+<nav>
+  <div class="logo"></div>
+  <div class="nav-links">
+    <a href="/">Services</a>
+    <a href="/illuminating-futures">Illuminating Futures</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
 
-      /* SECTIONS */
-      section { min-height: 100vh; padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
-      section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
-      section p { color: var(--muted); line-height: 1.7; }
-      .divider { width: 60px; height: 4px; margin: 1rem 0 2rem; background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3)); }
+<div class="hero">
+  <a href="#lighting" class="tile" style="background-image:url('/images/lighting.png')">
+    <div class="title-wrapper">
+      <span class="title-shadow">Lighting</span>
+      <span class="title-gradient">Lighting</span>
+    </div>
+  </a>
 
-      /* SCROLL BUTTONS */
-      .scroll-button {
-        display: inline-block;
-        margin-top: 2rem;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #fff;
-        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .scroll-button:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      }
-
-      /* FOOTER */
-      footer { padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
-      footer h3 { margin-bottom: 1rem; }
-      footer p { color: var(--muted); }
-    </style>
-  </head>
-
-  <body>
-    <!-- Background blobs -->
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
-
-    <main>
-      <!-- HERO -->
-      <div class="hero">
-        <!-- LIGHTING -->
-        <a href="#lighting" class="tile lighting" style="background-image: url('/images/lighting.png');">
-          <h1 class="title-wrapper">
-            <span class="title-shadow">Lighting</span>
-            <span class="title-gradient">Lighting</span>
-          </h1>
-        </a>
-
-        <!-- POWER + SYSTEMS -->
-        <div class="bottom">
-          <a href="#power" class="tile power" style="background-image: url('https://images.openai.com/static-rsc-4/Z6-2wMI0_rdfCV63UWBVQ8pUT9rL6uiZbR2NpGsVlri-B8au_UWWExVDxCFrJo8zBNH9rXWJPJO1U8rVo4_l8rSu8VtdpB5dybe54LbJUiDC11KSS1zvgTsYJ42s0onuBTl85dbBNDz-YEiyQaFB1zDRrT7R3vMMqTViQGULNQSpVa9o1bSgUvgvntVl_7L2?purpose=fullsize');">
-            <h2 class="title-wrapper">
-              <span class="title-shadow">Power</span>
-              <span class="title-gradient">Power</span>
-            </h2>
-          </a>
-
-          <a href="#systems" class="tile systems" style="background-image: url('https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg');">
-            <h2 class="title-wrapper">
-              <span class="title-shadow">Systems</span>
-              <span class="title-gradient">Systems</span>
-            </h2>
-          </a>
-        </div>
+  <div class="bottom">
+    <a href="#power" class="tile" style="background-image:url('https://images.openai.com/...')">
+      <div class="title-wrapper">
+        <span class="title-shadow">Power</span>
+        <span class="title-gradient">Power</span>
       </div>
+    </a>
 
-      <!-- SECTIONS -->
-      <section id="lighting">
-        <h2>Lighting</h2>
-        <div class="divider"></div>
-        <p>Providing comprehensive lighting solutions across <strong>live events</strong>, <strong>film</strong>, and <strong>broadcast</strong>. Whether you need full turnkey services or targeted support, we can deliver exactly what your production requires.</p>
-        <ul>
-          <li>Full turnkey lighting solutions for events, shoots, or broadcasts</li>
-          <li>Pre-production support and prep work, including design consultation</li>
-          <li>Rigging and truss setup for temporary or permanent installations</li>
-          <li>Automation and programming designed to support your event and crew</li>
-          <li>On-site operation and technical support throughout your production</li>
-        </ul>
-        <p>From concept to execution - ensuring lighting is visually impactful, safe, and seamlessly integrated with your production’s workflow.</p>
-        <a href="#footer" class="scroll-button">Realise your vision</a>
-      </section>
+    <a href="#systems" class="tile" style="background-image:url('https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg')">
+      <div class="title-wrapper">
+        <span class="title-shadow">Systems</span>
+        <span class="title-gradient">Systems</span>
+      </div>
+    </a>
+  </div>
+</div>
 
-      <section id="power">
-        <h2>Power</h2>
-        <div class="divider"></div>
-        <p>Providing complete temporary power solutions for <strong>live events</strong>, <strong>film</strong>, and <strong>broadcast</strong>.</p>
-        <ul>
-          <li>Provision and connection of generators and distribution systems</li>
-          <li>Effective coordination with other departments to ensure a balanced and reliable supply for your event</li>
-          <li>Inspection, testing, and certification to <strong>BS 7671</strong>, <strong>BS 7909</strong> and all other relevant industry standards</li>
-          <li>On-site support, monitoring, and troubleshooting during productions</li>
-        </ul>
-        <p>Ensuring reliable, compliant, and optimised power delivery for every production environment.</p>
-        <a href="#footer" class="scroll-button">Power your production</a>
-      </section>
+<!-- KEEP YOUR EXISTING SECTIONS HERE -->
 
-      <section id="systems">
-        <h2>Systems</h2>
-        <div class="divider"></div>
-        <p>Integrating and managing technical systems across sites and departments.</p>
-        <ul>
-          <li>IP Networking and distribution scaled to your production's needs</li>
-          <li>RF spectrum surveying, interference analysis, and licensing</li>
-          <li>Deployment of fixed-line and bonded internet connections</li>
-          <li>Interfacing, integration and management of diverse systems</li>
-          <li>Collaboration with dependent departments to streamline workflows</li>
-        </ul>
-        <p>Providing fully integrated, reliable, and scalable systems for complex productions.</p>
-        <a href="#footer" class="scroll-button">Empower your event</a>
-      </section>
-
-      <!-- FOOTER -->
-      <footer id="footer">
-  <h3>Contact</h3>
-  <p>
-    Email: <a href="mailto:enquiries@stangroom.uk" style="color: var(--accent2); text-decoration: underline;">enquiries@stangroom.uk</a><br />
-    Phone: +44 (0)1483 342 447<br />
-    Based in the UK — available for live events, film & broadcast
-  </p>
+<footer>
+  Contact details here
 </footer>
-    </main>
-  </body>
+
+</body>
 </html>
