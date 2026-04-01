@@ -1,0 +1,55 @@
+---
+const title = "Contact";
+---
+
+<html>
+<head>
+<title>{title}</title>
+
+<style>
+body {
+  background:#0b0c10;
+  color:#eaeaf0;
+  font-family:system-ui;
+  padding:4rem;
+}
+
+.container { max-width:600px; margin:auto; }
+
+input, textarea {
+  width:100%;
+  padding:0.8rem;
+  margin-top:1rem;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+}
+
+button {
+  margin-top:1rem;
+  padding:0.8rem 1.5rem;
+  background:linear-gradient(90deg,#7c5cff,#00d4ff);
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Contact</h1>
+
+<form>
+  <input type="text" placeholder="Name" required />
+  <input type="email" placeholder="Contact Email" required />
+  <textarea rows="5" placeholder="Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
+</div>
+
+</body>
+</html>
