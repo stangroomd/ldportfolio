@@ -36,7 +36,7 @@ const title = "Stangroom | Lighting • Power • Systems";
         color: var(--text);
       }
 
-      /* NAVBAR (added only) */
+      /* NAVBAR */
       nav {
         position: fixed;
         top: 0;
@@ -46,7 +46,7 @@ const title = "Stangroom | Lighting • Power • Systems";
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgba(0,0,0,0.6);
+        background: rgba(0,0,0,0.5);
         backdrop-filter: blur(10px);
         z-index: 1000;
       }
@@ -85,11 +85,15 @@ const title = "Stangroom | Lighting • Power • Systems";
       main { 
         position: relative; 
         z-index: 1;
-        margin-top: 70px; /* offset for navbar */
       }
 
       /* HERO GRID */
-      .hero { height: 100vh; display: grid; grid-template-rows: 3fr 2fr; }
+      .hero {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 3fr 2fr;
+        padding-top: 70px;
+      }
 
       /* TILE BASE */
       .tile {
@@ -188,7 +192,7 @@ const title = "Stangroom | Lighting • Power • Systems";
 
   <body>
 
-    <!-- NAVBAR (added only) -->
+    <!-- NAVBAR -->
     <nav>
       <div></div>
       <div class="nav-links">
@@ -232,7 +236,7 @@ const title = "Stangroom | Lighting • Power • Systems";
         </div>
       </div>
 
-      <!-- ALL YOUR ORIGINAL SECTIONS REMAIN EXACTLY AS-IS BELOW -->
+      <!-- ALL ORIGINAL CONTENT CONTINUES UNCHANGED -->
 
       <section id="lighting">
         <h2>Lighting</h2>
