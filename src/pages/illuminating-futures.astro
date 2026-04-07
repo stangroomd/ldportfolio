@@ -1,34 +1,162 @@
 ---
-const title = "Illuminating Futures";
+const title = "Stangroom | Illuminating Futures";
 ---
 
-<html>
-<head>
-<title>{title}</title>
-<style>
-body { background:#0b0c10; color:#eaeaf0; font-family:system-ui; padding:4rem; }
-.container { max-width:800px; margin:auto; }
-h1 { margin-bottom:1rem; }
-p { color:#9aa0a6; line-height:1.7; }
-</style>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
 
-<body>
-<div class="container">
-<h1>Illuminating Futures</h1>
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
+        --muted: #9aa0a6;
 
-<p>
-I offer opportunities for aspirational young people to gain real-world experience by shadowing me on live productions.
-</p>
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
 
-<p>
-This provides insight into the technical, creative, and logistical aspects of working in lighting, power, and systems across live events, film, and broadcast.
-</p>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-<p>
-If you're passionate, curious, and eager to learn, this is a chance to experience the industry first-hand.
-</p>
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
 
-</div>
-</body>
+      /* Background blobs */
+      .blob {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.3;
+        z-index: 0;
+      }
+      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
+      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
+      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
+
+      main { position: relative; z-index: 1; padding-top: 70px; }
+
+      /* NAVBAR */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 2rem;
+        background: rgba(0,0,0,0.5);
+        z-index: 10;
+      }
+      .nav-logo { font-weight: bold; font-size: 1.2rem; }
+      .nav-links { display: flex; gap: 2rem; }
+      .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; }
+      .nav-links a:hover { color: var(--accent2); }
+
+      /* HERO IMAGE */
+      .hero-image {
+        position: relative;
+        background: url('/images/hero-placeholder.png') center/cover no-repeat;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-image h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      section { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+      section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+      section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.5rem; }
+      section p { color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+      section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+      section ul li { margin-bottom: 0.5rem; }
+
+      .divider {
+        width: 60px;
+        height: 4px;
+        margin: 1rem 0 2rem;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      }
+
+      footer {
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+      }
+      footer p { color: var(--muted); }
+      footer a { color: var(--accent2); text-decoration: underline; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Background blobs -->
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+    <!-- NAVBAR -->
+    <nav>
+      <div class="nav-logo">Logo</div>
+      <div class="nav-links">
+        <a href="/services">Services</a>
+        <a href="/illuminating-futures">Illuminating Futures</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- HERO IMAGE -->
+      <div class="hero-image">
+        <h1>Illuminating Futures</h1>
+      </div>
+
+      <!-- BODY CONTENT -->
+      <section id="illuminating-futures">
+        <h2>Illuminating Futures</h2>
+        <div class="divider"></div>
+
+        <p>Our sector can be hard for young people to get into. Recognised pathways are not always accessible to everyone, and gaining experience can be difficult when that very experience is often a requirement to get started.</p>
+
+        <p>I offer opportunities for aspirational young people to gain real-world experience by shadowing me on a variety of productions.</p>
+
+        <p>This provides insight into the technical, creative, and logistical aspects of working in the industry, and it’s a great addition to any CV.</p>
+
+        <h3>How to get involved</h3>
+        <p>If you're passionate, curious, and eager to learn, this is a chance to experience the industry first-hand.</p>
+        <p>Send a message to <a href="mailto:illuminating_futures@stangroom.uk">illuminating_futures@stangroom.uk</a> telling us about your interest, and we’ll find an opportunity near to you.</p>
+        <p>If you’re under the age of 16, have a parent or carer contact us for you.</p>
+
+        <h3>How it works, for businesses</h3>
+        <p>This programme is designed to be as transparent as possible to clients, production companies, contractors and fellow techs alike.</p>
+        <p>Participants attend voluntarily, with no contracts, obligations, impact on invoicing or on professional services rendered. All logistics are handled on my end, with only your support in relevant safeguarding duties needed.</p>
+
+        <p>For more information contact: <a href="mailto:illuminating_futures@stangroom.uk">illuminating_futures@stangroom.uk</a></p>
+      </section>
+
+      <footer>
+        <p>Email: <a href="mailto:enquiries@stangroom.uk">enquiries@stangroom.uk</a><br />
+        Phone: +44 (0)1483 342 447<br />
+        Based in the UK — available for live events, film & broadcast</p>
+      </footer>
+    </main>
+  </body>
 </html>
