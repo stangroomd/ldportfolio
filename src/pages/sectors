@@ -1,0 +1,200 @@
+---
+const title = "Sectors | Stangroom UK";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
+        --muted: #9aa0a6;
+
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+      }
+
+      .nav-links { display: flex; gap: 2rem; }
+
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        opacity: 0.85;
+      }
+
+      .nav-links a:hover { opacity: 1; }
+
+      main { padding-top: 80px; }
+
+      .hero {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 3fr 2fr;
+      }
+
+      .tile {
+        display: flex;
+        align-items: flex-end;
+        padding: 2.5rem;
+        text-decoration: none;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+      }
+
+      .title {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .bottom { display: grid; grid-template-columns: 1fr 1fr; }
+
+      section {
+        padding: 5rem 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      section h2 { font-size: 2rem; margin-bottom: 1rem; }
+      section p { color: var(--muted); line-height: 1.7; }
+
+      footer {
+        padding: 3rem;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <nav>
+      <div></div>
+      <div class="nav-links">
+        <a href="/sectors">Sectors</a>
+        <a href="/indev">Disciplines</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- HERO -->
+      <div class="hero">
+
+        <!-- LIVE EVENTS -->
+        <a href="#events" class="tile" style="background-image:url('/images/events.jpg'); position:relative;">
+          <h1 class="title">Live Events</h1>
+        </a>
+
+        <div class="bottom">
+
+          <!-- FILM -->
+          <a href="#film" class="tile" style="background-image:url('/images/film.jpg'); position:relative;">
+            <h2 class="title">Film</h2>
+          </a>
+
+          <!-- BROADCAST -->
+          <a href="#broadcast" class="tile" style="background-image:url('/images/broadcast.jpg'); position:relative;">
+            <h2 class="title">Broadcast</h2>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- LIVE EVENTS -->
+      <section id="events">
+        <h2>Live Events</h2>
+        <p>
+          Delivering robust, scalable technical solutions for live environments — from small corporate setups to large-scale productions.
+        </p>
+        <ul>
+          <li>End-to-end lighting, power, and systems integration</li>
+          <li>Temporary power distribution and compliance (BS 7909)</li>
+          <li>Lighting design, rigging, and on-site operation</li>
+          <li>Networking, comms, and RF coordination across departments</li>
+          <li>On-site troubleshooting and technical management</li>
+        </ul>
+        <p>
+          Focused on reliability, safety, and seamless delivery under live conditions where there are no second takes.
+        </p>
+      </section>
+
+      <!-- FILM -->
+      <section id="film">
+        <h2>Film</h2>
+        <p>
+          Supporting film productions with flexible, production-aware technical services that integrate cleanly with shooting workflows.
+        </p>
+        <ul>
+          <li>Lighting support tailored to cinematography requirements</li>
+          <li>Generator and distribution setups for location शूटs</li>
+          <li>Quiet, efficient power solutions for sensitive environments</li>
+          <li>Coordination with camera, grip, and production departments</li>
+          <li>Rapid deployment and strike for tight schedules</li>
+        </ul>
+        <p>
+          Ensuring technical delivery enhances creative intent without slowing production.
+        </p>
+      </section>
+
+      <!-- BROADCAST -->
+      <section id="broadcast">
+        <h2>Broadcast</h2>
+        <p>
+          Providing broadcast-ready infrastructure with a focus on redundancy, signal integrity, and system integration.
+        </p>
+        <ul>
+          <li>IP networking and signal distribution</li>
+          <li>Power resilience and backup strategies</li>
+          <li>RF planning and spectrum coordination</li>
+          <li>Integration of multiple technical systems and vendors</li>
+          <li>Support for live, hybrid, and remote broadcast workflows</li>
+        </ul>
+        <p>
+          Designed for high-pressure environments where uptime and precision are critical.
+        </p>
+      </section>
+
+      <footer>
+        <p>© Stangroom UK</p>
+      </footer>
+
+    </main>
+
+  </body>
+</html>
