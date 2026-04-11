@@ -68,14 +68,14 @@ const title = "Stangroom UK";
         opacity: 1;
       }
 
-      /* DROPDOWN (added only) */
+      /* DROPDOWN (fixed) */
       .dropdown {
         position: relative;
       }
 
       .dropdown-content {
         position: absolute;
-        top: 120%;
+        top: 100%;
         left: 0;
         background: rgba(0,0,0,0.9);
         backdrop-filter: blur(10px);
@@ -84,6 +84,16 @@ const title = "Stangroom UK";
         display: none;
         min-width: 200px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      }
+
+      /* hover buffer */
+      .dropdown::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 10px;
       }
 
       .dropdown-content a {
