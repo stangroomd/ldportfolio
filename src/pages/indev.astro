@@ -1,5 +1,5 @@
 ---
-const title = "Stangroom | Lighting • Power • Systems";
+const title = "Stangroom UK";
 ---
 
 <!DOCTYPE html>
@@ -54,6 +54,7 @@ const title = "Stangroom | Lighting • Power • Systems";
       .nav-links {
         display: flex;
         gap: 2rem;
+        align-items: center;
       }
 
       .nav-links a {
@@ -65,6 +66,40 @@ const title = "Stangroom | Lighting • Power • Systems";
 
       .nav-links a:hover {
         opacity: 1;
+      }
+
+      /* DROPDOWN (added only) */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: 120%;
+        left: 0;
+        background: rgba(0,0,0,0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 0.5rem 0;
+        display: none;
+        min-width: 200px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        opacity: 0.85;
+      }
+
+      .dropdown-content a:hover {
+        background: rgba(255,255,255,0.05);
+        opacity: 1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
       }
 
       /* Background blobs */
@@ -196,7 +231,13 @@ const title = "Stangroom | Lighting • Power • Systems";
     <nav>
       <div></div>
       <div class="nav-links">
-        <a href="/">Services</a>
+        <div class="dropdown">
+          <a href="#">Services</a>
+          <div class="dropdown-content">
+            <a href="/sectors">Explore by sector</a>
+            <a href="/indev">Explore by discipline</a>
+          </div>
+        </div>
         <a href="/illuminating-futures">Illuminating Futures</a>
         <a href="/contact">Contact</a>
       </div>
