@@ -36,7 +36,7 @@ const title = "Illuminating Futures | Stangroom UK";
         color: var(--text);
       }
 
-      /* NAVBAR (IDENTICAL TO OTHER PAGES) */
+      /* NAVBAR (UNCHANGED ACROSS SITE) */
       nav {
         position: fixed;
         top: 0;
@@ -68,7 +68,6 @@ const title = "Illuminating Futures | Stangroom UK";
         opacity: 1;
       }
 
-      /* DROPDOWN */
       .dropdown {
         position: relative;
       }
@@ -86,6 +85,10 @@ const title = "Illuminating Futures | Stangroom UK";
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       }
 
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
       .dropdown::after {
         content: "";
         position: absolute;
@@ -93,10 +96,6 @@ const title = "Illuminating Futures | Stangroom UK";
         left: 0;
         width: 100%;
         height: 10px;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
       }
 
       .dropdown-content a {
@@ -132,7 +131,7 @@ const title = "Illuminating Futures | Stangroom UK";
         padding-top: 70px;
       }
 
-      /* HERO */
+      /* HERO (same system style as other pages) */
       .hero {
         min-height: 100vh;
         display: flex;
@@ -156,7 +155,7 @@ const title = "Illuminating Futures | Stangroom UK";
         margin-bottom: 1.5rem;
       }
 
-      .hero .gradient {
+      .gradient {
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -170,7 +169,7 @@ const title = "Illuminating Futures | Stangroom UK";
         font-size: 1.1rem;
       }
 
-      /* SECTIONS */
+      /* SECTIONS (RESTORED STRUCTURE) */
       section {
         min-height: 100vh;
         padding: 6rem 2rem;
@@ -192,12 +191,6 @@ const title = "Illuminating Futures | Stangroom UK";
         margin-bottom: 1rem;
       }
 
-      section p {
-        color: var(--muted);
-        line-height: 1.8;
-        margin-bottom: 1rem;
-      }
-
       .divider {
         width: 60px;
         height: 4px;
@@ -205,7 +198,12 @@ const title = "Illuminating Futures | Stangroom UK";
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
       }
 
-      /* CTA */
+      section p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
       .cta {
         margin-top: 2rem;
         display: inline-block;
@@ -215,11 +213,6 @@ const title = "Illuminating Futures | Stangroom UK";
         font-weight: 600;
         color: #fff;
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-        transition: transform 0.3s ease;
-      }
-
-      .cta:hover {
-        transform: scale(1.05);
       }
 
       footer {
@@ -236,7 +229,7 @@ const title = "Illuminating Futures | Stangroom UK";
 
   <body>
 
-    <!-- NAVBAR (IDENTICAL ACROSS SITE) -->
+    <!-- NAVBAR (CORRECT) -->
     <nav>
       <div></div>
 
@@ -261,7 +254,7 @@ const title = "Illuminating Futures | Stangroom UK";
 
     <main>
 
-      <!-- HERO -->
+      <!-- HERO (RESTORED CONTENT) -->
       <div class="hero">
         <div>
           <h1>
@@ -282,9 +275,8 @@ const title = "Illuminating Futures | Stangroom UK";
           The live production industry relies on skilled technicians, yet entry routes are often unclear or inaccessible.
         </p>
         <p>
-          We aim to support practical learning, exposure, and real-world experience for those entering the industry.
+          We believe practical experience and exposure are essential to building the next generation of crew.
         </p>
-        <a href="/contact" class="cta">Get involved</a>
       </section>
 
       <!-- SECTION 2 -->
@@ -292,10 +284,10 @@ const title = "Illuminating Futures | Stangroom UK";
         <h2>What we support</h2>
         <div class="divider"></div>
         <p>
-          Hands-on exposure to live events, structured learning pathways, and collaboration with working professionals.
+          Hands-on access to live events, real-world workflows, and collaboration with working professionals.
         </p>
         <p>
-          Focused on lighting, power distribution, and technical systems — the core of modern production environments.
+          Focused on lighting, power, and systems — the core disciplines behind every production environment.
         </p>
       </section>
 
@@ -304,11 +296,11 @@ const title = "Illuminating Futures | Stangroom UK";
         <h2>Future direction</h2>
         <div class="divider"></div>
         <p>
-          Building long-term pathways into the industry through mentorship, access, and real-world production environments.
+          Building structured pathways into the industry through mentorship, exposure, and live production experience.
         </p>
       </section>
 
-      <!-- FOOTER -->
+      <!-- FOOTER (ONLY CHANGE = QUICK LINKS) -->
       <footer>
         <p>© Stangroom UK — Illuminating Futures</p>
 
@@ -321,10 +313,9 @@ const title = "Illuminating Futures | Stangroom UK";
         </div>
       </footer>
 
-
     </main>
 
-    <!-- SCROLL ANIMATION -->
+    <!-- SCROLL ANIMATION (MATCH OTHER PAGES) -->
     <script>
       const elements = document.querySelectorAll('.hero, section');
 
