@@ -1,5 +1,5 @@
 ---
-const title = "Sectors | Stangroom UK";
+const title = "Stangroom UK";
 ---
 
 <!DOCTYPE html>
@@ -26,13 +26,17 @@ const title = "Sectors | Stangroom UK";
         padding: 0;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family: system-ui, -apple-system, sans-serif;
         background: var(--bg);
         color: var(--text);
       }
 
-      /* NAVBAR (copied from indev style intent) */
+      /* NAVBAR (IDENTICAL TO INDEV) */
       nav {
         position: fixed;
         top: 0;
@@ -64,7 +68,7 @@ const title = "Sectors | Stangroom UK";
         opacity: 1;
       }
 
-      /* DROPDOWN (same as homepage working version) */
+      /* DROPDOWN (IDENTICAL FIXED VERSION) */
       .dropdown {
         position: relative;
       }
@@ -107,26 +111,45 @@ const title = "Sectors | Stangroom UK";
         display: block;
       }
 
+      /* BLOBS (IDENTICAL) */
+      .blob {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
+      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
+      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
+
       main {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* HERO (FIXED FOR NAVBAR HEIGHT LIKE INDEV) */
+      .hero {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 3fr 2fr;
         padding-top: 70px;
       }
 
-      /* HERO GRID (IMPORTANT FIX: full viewport minus nav) */
-      .hero {
-        height: calc(100vh - 70px);
-        display: grid;
-        grid-template-rows: 3fr 2fr;
-      }
-
+      /* TILE (IDENTICAL STYLE) */
       .tile {
         position: relative;
+        width: 100%;
         display: flex;
         align-items: flex-end;
         padding: 2.5rem;
         text-decoration: none;
         background-size: cover;
         background-position: center;
-        overflow: hidden;
+        transition: transform 0.4s ease;
       }
 
       .tile::after {
@@ -136,13 +159,34 @@ const title = "Sectors | Stangroom UK";
         background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
       }
 
-      .title {
+      .tile:hover {
+        transform: scale(1.01);
+      }
+
+      /* TITLE SYSTEM (IDENTICAL) */
+      .title-wrapper {
         position: relative;
         font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1;
+      }
+
+      .title-shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: rgba(0,0,0,0.7);
+        filter: blur(8px);
+        z-index: 1;
+        white-space: nowrap;
+      }
+
+      .title-gradient {
+        position: relative;
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        z-index: 1;
+        z-index: 2;
+        white-space: nowrap;
       }
 
       .bottom {
@@ -151,19 +195,25 @@ const title = "Sectors | Stangroom UK";
       }
 
       @media (max-width: 800px) {
-        .hero {
-          grid-template-rows: 1fr 1fr;
-        }
-        .bottom {
-          grid-template-columns: 1fr;
-        }
+        .hero { grid-template-rows: 1fr 1fr; }
+        .bottom { grid-template-columns: 1fr; }
       }
 
+      /* SECTIONS (IDENTICAL BASE) */
       section {
         min-height: 100vh;
         padding: 5rem 2rem;
         max-width: 900px;
         margin: 0 auto;
+
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       section h2 {
@@ -175,17 +225,36 @@ const title = "Sectors | Stangroom UK";
         color: var(--muted);
         line-height: 1.7;
       }
+
+      .divider {
+        width: 60px;
+        height: 4px;
+        margin: 1rem 0 2rem;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      }
+
+      /* SCROLL BUTTON */
+      .scroll-button {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+        border-radius: 8px;
+        text-decoration: none;
+      }
     </style>
   </head>
 
   <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (IDENTICAL INDEV) -->
     <nav>
       <div></div>
 
       <div class="nav-links">
-
         <div class="dropdown">
           <a href="#">Services</a>
           <div class="dropdown-content">
@@ -199,64 +268,89 @@ const title = "Sectors | Stangroom UK";
       </div>
     </nav>
 
+    <!-- BLOBS -->
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
     <main>
 
       <!-- HERO -->
       <div class="hero">
 
-        <!-- LIVE EVENTS -->
+        <!-- LIVE EVENTS (APPROVED IMAGE) -->
         <a href="#events"
            class="tile"
            style="background-image: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?w=1600&h=900&fit=crop&q=80');">
-          <h1 class="title">Live Events</h1>
+          <div class="title-wrapper">
+            <span class="title-shadow">Live Events</span>
+            <span class="title-gradient">Live Events</span>
+          </div>
         </a>
 
         <div class="bottom">
 
-          <!-- FILM -->
           <a href="#film"
              class="tile"
              style="background-image: url('/images/placeholder.jpg');">
-            <h2 class="title">Film</h2>
+            <div class="title-wrapper">
+              <span class="title-shadow">Film</span>
+              <span class="title-gradient">Film</span>
+            </div>
           </a>
 
-          <!-- BROADCAST -->
           <a href="#broadcast"
              class="tile"
              style="background-image: url('/images/placeholder.jpg');">
-            <h2 class="title">Broadcast</h2>
+            <div class="title-wrapper">
+              <span class="title-shadow">Broadcast</span>
+              <span class="title-gradient">Broadcast</span>
+            </div>
           </a>
 
         </div>
       </div>
 
       <!-- CONTENT -->
-
       <section id="events">
         <h2>Live Events</h2>
-        <p>
-          Full technical delivery for concerts, festivals, touring productions, and corporate live events.
-        </p>
-        <p>
-          Lighting, power, and systems integration delivered with reliability under pressure in fast-moving environments.
-        </p>
+        <div class="divider"></div>
+        <p>Full technical delivery for concerts, festivals, touring productions, and corporate live events.</p>
       </section>
 
       <section id="film">
         <h2>Film</h2>
-        <p>
-          On-location and studio support for film production, ensuring lighting and power integrate seamlessly with crew workflows.
-        </p>
+        <div class="divider"></div>
+        <p>On-location and studio support for film production with integrated lighting and power workflows.</p>
       </section>
 
       <section id="broadcast">
         <h2>Broadcast</h2>
-        <p>
-          Robust, broadcast-ready infrastructure supporting live transmission, studio production, and multi-camera workflows.
-        </p>
+        <div class="divider"></div>
+        <p>Broadcast-ready infrastructure supporting live transmission and multi-camera production systems.</p>
       </section>
 
+      <footer id="footer">
+        <h3>Contact</h3>
+        <p>Email: enquiries@stangroom.uk</p>
+      </footer>
+
     </main>
+
+    <!-- SCROLL ANIMATION (MATCHING INDEV STYLE) -->
+    <script>
+      const items = document.querySelectorAll('.tile, section');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      items.forEach(el => observer.observe(el));
+    </script>
 
   </body>
 </html>
