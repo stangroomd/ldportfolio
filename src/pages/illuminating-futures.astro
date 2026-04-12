@@ -1,5 +1,5 @@
 ---
-const title = "Illuminating Futures | Stangroom UK";
+const title = "Stangroom | Illuminating Futures";
 ---
 
 <!DOCTYPE html>
@@ -26,91 +26,14 @@ const title = "Illuminating Futures | Stangroom UK";
         padding: 0;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
+      html { scroll-behavior: smooth; }
       body {
         font-family: system-ui, -apple-system, sans-serif;
         background: var(--bg);
         color: var(--text);
       }
 
-      /* NAVBAR (UNCHANGED ACROSS SITE) */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(0,0,0,0.5);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-      }
-
-      .nav-links a {
-        color: var(--text);
-        text-decoration: none;
-        font-size: 0.95rem;
-        opacity: 0.85;
-      }
-
-      .nav-links a:hover {
-        opacity: 1;
-      }
-
-      .dropdown {
-        position: relative;
-      }
-
-      .dropdown-content {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: rgba(0,0,0,0.9);
-        backdrop-filter: blur(10px);
-        border-radius: 8px;
-        padding: 0.5rem 0;
-        display: none;
-        min-width: 200px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-
-      .dropdown::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 10px;
-      }
-
-      .dropdown-content a {
-        display: block;
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-        opacity: 0.85;
-      }
-
-      .dropdown-content a:hover {
-        background: rgba(255,255,255,0.05);
-        opacity: 1;
-      }
-
-      /* BLOBS */
+      /* Background blobs */
       .blob {
         position: fixed;
         width: 500px;
@@ -120,76 +43,52 @@ const title = "Illuminating Futures | Stangroom UK";
         opacity: 0.3;
         z-index: 0;
       }
-
       .blob.one { background: var(--accent1); top: -100px; left: -100px; }
       .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
       .blob.three { background: var(--accent3); top: 50%; left: 60%; }
 
-      main {
-        position: relative;
-        z-index: 1;
-        padding-top: 70px;
-      }
+      main { position: relative; z-index: 1; padding-top: 70px; }
 
-      /* HERO (same system style as other pages) */
-      .hero {
-        min-height: 100vh;
+      /* NAVBAR */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 2rem;
+        background: rgba(0,0,0,0.5);
+        z-index: 10;
+      }
+      .nav-logo { font-weight: bold; font-size: 1.2rem; }
+      .nav-links { display: flex; gap: 2rem; }
+      .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; }
+      .nav-links a:hover { color: var(--accent2); }
+
+      /* HERO IMAGE */
+      .hero-image {
+        position: relative;
+        background: url('/images/hero-placeholder.png') center/cover no-repeat;
+        height: 50vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 6rem 2rem;
-        text-align: center;
-
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
       }
-
-      .hero.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .hero h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        margin-bottom: 1.5rem;
-      }
-
-      .gradient {
+      .hero-image h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      .hero p {
-        max-width: 700px;
-        margin: 0 auto;
-        color: var(--muted);
-        line-height: 1.8;
-        font-size: 1.1rem;
-      }
-
-      /* SECTIONS (RESTORED STRUCTURE) */
-      section {
-        min-height: 100vh;
-        padding: 6rem 2rem;
-        max-width: 900px;
-        margin: 0 auto;
-
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-
-      section.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      section h2 {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-      }
+      section { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+      section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+      section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.5rem; }
+      section p { color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+      section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+      section ul li { margin-bottom: 0.5rem; }
 
       .divider {
         width: 60px;
@@ -198,137 +97,66 @@ const title = "Illuminating Futures | Stangroom UK";
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
       }
 
-      section p {
-        color: var(--muted);
-        line-height: 1.8;
-        margin-bottom: 1rem;
-      }
-
-      .cta {
-        margin-top: 2rem;
-        display: inline-block;
-        padding: 0.8rem 1.5rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        color: #fff;
-        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-      }
-
       footer {
         padding: 3rem 2rem;
-        text-align: center;
         border-top: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
       }
-
-      footer p {
-        color: var(--muted);
-      }
+      footer p { color: var(--muted); }
+      footer a { color: var(--accent2); text-decoration: underline; }
     </style>
   </head>
 
   <body>
+    <!-- Background blobs -->
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
 
-    <!-- NAVBAR (CORRECT) -->
+    <!-- NAVBAR -->
     <nav>
-      <div></div>
-
+      <div class="nav-logo">Logo</div>
       <div class="nav-links">
-        <div class="dropdown">
-          <a href="#">Services</a>
-          <div class="dropdown-content">
-            <a href="/sectors">Explore by sector</a>
-            <a href="/indev">Explore by discipline</a>
-          </div>
-        </div>
-
+        <a href="/services">Services</a>
         <a href="/illuminating-futures">Illuminating Futures</a>
         <a href="/contact">Contact</a>
       </div>
     </nav>
 
-    <!-- BLOBS -->
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
-
     <main>
-
-      <!-- HERO (RESTORED CONTENT) -->
-      <div class="hero">
-        <div>
-          <h1>
-            <span class="gradient">Illuminating Futures</span>
-          </h1>
-          <p>
-            Investing in the next generation of live production professionals.
-            Supporting access, training, and pathways into lighting, power, and systems across live events, film, and broadcast.
-          </p>
-        </div>
+      <!-- HERO IMAGE -->
+      <div class="hero-image">
+        <h1>"The UK’s creative industries are world leading. But who gets the chance to build a career is still shaped by exclusion, informality, and inequality."</br><br>-BECTU</h1>
       </div>
 
-      <!-- SECTION 1 -->
-      <section>
-        <h2>Why it matters</h2>
+      <!-- BODY CONTENT -->
+      <section id="illuminating-futures">
+        <h2>Illuminating Futures</h2>
         <div class="divider"></div>
-        <p>
-          The live production industry relies on skilled technicians, yet entry routes are often unclear or inaccessible.
-        </p>
-        <p>
-          We believe practical experience and exposure are essential to building the next generation of crew.
-        </p>
+
+        <p>Our sector can be hard for young people to get into. Recognised pathways are not always accessible to everyone, and gaining experience can be difficult when that very experience is often a requirement to get started.</p>
+
+        <p>I offer opportunities for aspirational young people to gain real-world experience by shadowing me on a variety of productions.</p>
+
+        <p>This provides insight into the technical, creative, and logistical aspects of working in the industry, and it’s a great addition to any CV.</p>
+
+        <h3>How to get involved</h3>
+        <p>If you're passionate, curious, and eager to learn, this is a chance to experience the industry first-hand.</p>
+        <p>Send a message to <a href="mailto:illuminating_futures@stangroom.uk">illuminating_futures@stangroom.uk</a> telling us about your interest, and we’ll find an opportunity near to you.</p>
+        <p>If you’re under the age of 16, have a parent or carer contact us for you.</p>
+
+        <h3>How it works, for businesses</h3>
+        <p>This programme is designed to be as transparent as possible to clients, production companies, contractors and fellow techs alike.</p>
+        <p>Participants attend voluntarily, with no contracts, obligations, impact on invoicing or on professional services rendered. All logistics are handled on my end, with only your support in relevant safeguarding duties needed.</p>
+
+        <p>For more information contact: <a href="mailto:illuminating_futures@stangroom.uk">illuminating_futures@stangroom.uk</a></p>
       </section>
 
-      <!-- SECTION 2 -->
-      <section>
-        <h2>What we support</h2>
-        <div class="divider"></div>
-        <p>
-          Hands-on access to live events, real-world workflows, and collaboration with working professionals.
-        </p>
-        <p>
-          Focused on lighting, power, and systems — the core disciplines behind every production environment.
-        </p>
-      </section>
-
-      <!-- SECTION 3 -->
-      <section>
-        <h2>Future direction</h2>
-        <div class="divider"></div>
-        <p>
-          Building structured pathways into the industry through mentorship, exposure, and live production experience.
-        </p>
-      </section>
-
-      <!-- FOOTER (ONLY CHANGE = QUICK LINKS) -->
       <footer>
-        <p>© Stangroom UK — Illuminating Futures</p>
-
-        <div style="margin-top: 2rem;">
-          <h3>Quick Links</h3>
-          <p>
-            <a href="/mission-statement" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">Mission Statement</a>
-            <a href="/reports-policies" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">Reports, certifications and policies</a>
-          </p>
-        </div>
+        <p>Email: <a href="mailto:enquiries@stangroom.uk">enquiries@stangroom.uk</a><br />
+        Phone: +44 (0)1483 342 447<br />
+        Based in the UK — available for live events, film & broadcast</p>
       </footer>
-
     </main>
-
-    <!-- SCROLL ANIMATION (MATCH OTHER PAGES) -->
-    <script>
-      const elements = document.querySelectorAll('.hero, section');
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.15 });
-
-      elements.forEach(el => observer.observe(el));
-    </script>
-
   </body>
 </html>
