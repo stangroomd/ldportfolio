@@ -1,5 +1,5 @@
 ---
-const title = "Policies & Documents | Stangroom UK";
+const title = "Reports, Certifications & Policies | Stangroom UK";
 ---
 
 <!DOCTYPE html>
@@ -21,7 +21,6 @@ const title = "Policies & Documents | Stangroom UK";
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      html { scroll-behavior: smooth; }
 
       body {
         font-family: system-ui, -apple-system, sans-serif;
@@ -29,13 +28,21 @@ const title = "Policies & Documents | Stangroom UK";
         color: var(--text);
       }
 
+      html { scroll-behavior: smooth; }
+
+      /* NAVBAR (IDENTICAL) */
       nav {
         position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
         padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
       }
 
       .nav-links {
@@ -44,14 +51,44 @@ const title = "Policies & Documents | Stangroom UK";
         align-items: center;
       }
 
-      .dropdown { position: relative; }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background: rgba(0,0,0,0.9);
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.95rem;
+        opacity: 0.85;
       }
+
+      .nav-links a:hover { opacity: 1; }
+
+      .dropdown { position: relative; }
+
+      .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0,0,0,0.9);
+        border-radius: 8px;
+        padding: 0.5rem 0;
+        display: none;
+        min-width: 200px;
+      }
+
       .dropdown:hover .dropdown-content { display: block; }
 
+      .dropdown::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 10px;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 0.6rem 1rem;
+      }
+
+      /* BLOBS (RESTORED) */
       .blob {
         position: fixed;
         width: 500px;
@@ -59,9 +96,18 @@ const title = "Policies & Documents | Stangroom UK";
         border-radius: 50%;
         filter: blur(120px);
         opacity: 0.3;
+        z-index: 0;
       }
 
-      main { padding-top: 70px; }
+      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
+      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
+      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
+
+      main {
+        position: relative;
+        z-index: 1;
+        padding-top: 70px;
+      }
 
       section {
         max-width: 900px;
@@ -69,13 +115,22 @@ const title = "Policies & Documents | Stangroom UK";
         padding: 6rem 2rem;
       }
 
-      h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
 
       .divider {
         width: 60px;
         height: 4px;
         margin: 1rem 0 2rem;
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
       }
 
       ul {
@@ -87,20 +142,35 @@ const title = "Policies & Documents | Stangroom UK";
         margin-bottom: 1rem;
       }
 
-      a {
-        color: var(--accent2);
+      li a {
+        color: var(--text);
+        text-decoration: none;
+        opacity: 0.85;
+      }
+
+      li a:hover {
+        opacity: 1;
         text-decoration: underline;
       }
 
+      /* FOOTER (MATCHED) */
       footer {
-        padding: 3rem;
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
         text-align: center;
       }
+
+      footer p { color: var(--muted); }
     </style>
   </head>
 
   <body>
 
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+    <!-- NAVBAR -->
     <nav>
       <div></div>
       <div class="nav-links">
@@ -122,7 +192,7 @@ const title = "Policies & Documents | Stangroom UK";
         <h1>Reports, Certifications & Policies</h1>
         <div class="divider"></div>
 
-        <p>Download key documents and policies below.</p>
+        <p>Download key documents below.</p>
 
         <ul>
           <li><a href="#">Corporate Social Responsibility (PDF)</a></li>
@@ -131,8 +201,35 @@ const title = "Policies & Documents | Stangroom UK";
         </ul>
       </section>
 
+      <!-- FOOTER -->
       <footer>
-        <p>Email: enquiries@stangroom.uk</p>
+        <div style="max-width: 900px; margin: 0 auto;">
+          <h3 style="margin-bottom: 1rem;">Contact</h3>
+
+          <p style="line-height: 1.7;">
+            Email:
+            <a href="mailto:enquiries@stangroom.uk" style="color: var(--accent2); text-decoration: underline;">
+              enquiries@stangroom.uk
+            </a><br />
+
+            Phone: +44 (0)1483 342 447<br />
+            Based in the UK — available for live events, film & broadcast
+          </p>
+
+          <div style="margin-top: 2rem;">
+            <h3 style="margin-bottom: 1rem;">Quick Links</h3>
+
+            <p style="color: var(--muted); line-height: 1.8;">
+              <a href="/mission-statement" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">
+                Mission Statement
+              </a>
+
+              <a href="/reports-policies" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">
+                Reports, certifications and policies
+              </a>
+            </p>
+          </div>
+        </div>
       </footer>
 
     </main>
