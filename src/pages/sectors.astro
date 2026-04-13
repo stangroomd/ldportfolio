@@ -1,5 +1,5 @@
 ---
-const title = "Stangroom UK";
+const title = "Stangroom UK | Sectors";
 ---
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ const title = "Stangroom UK";
         color: var(--text);
       }
 
-      /* NAVBAR (IDENTICAL TO INDEV) */
+      /* NAVBAR */
       nav {
         position: fixed;
         top: 0;
@@ -68,7 +68,7 @@ const title = "Stangroom UK";
         opacity: 1;
       }
 
-      /* DROPDOWN (IDENTICAL FIXED VERSION) */
+      /* DROPDOWN */
       .dropdown {
         position: relative;
       }
@@ -111,7 +111,7 @@ const title = "Stangroom UK";
         display: block;
       }
 
-      /* BLOBS (IDENTICAL) */
+      /* BLOBS */
       .blob {
         position: fixed;
         width: 500px;
@@ -126,12 +126,12 @@ const title = "Stangroom UK";
       .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
       .blob.three { background: var(--accent3); top: 50%; left: 60%; }
 
-      main {
-        position: relative;
+      main { 
+        position: relative; 
         z-index: 1;
       }
 
-      /* HERO (FIXED FOR NAVBAR HEIGHT LIKE INDEV) */
+      /* HERO GRID */
       .hero {
         height: 100vh;
         display: grid;
@@ -139,7 +139,7 @@ const title = "Stangroom UK";
         padding-top: 70px;
       }
 
-      /* TILE (IDENTICAL STYLE) */
+      /* TILE BASE */
       .tile {
         position: relative;
         width: 100%;
@@ -159,15 +159,19 @@ const title = "Stangroom UK";
         background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
       }
 
-      .tile:hover {
-        transform: scale(1.01);
-      }
+      /* COLOUR TINTS (same classes reused) */
+      .tile.lighting::after { background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2)); }
+      .tile.power::after { background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2)); }
+      .tile.systems::after { background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2)); }
 
-      /* TITLE SYSTEM (IDENTICAL) */
+      .tile:hover { transform: scale(1.01); }
+
+      /* TITLE (IDENTICAL STYLE) */
       .title-wrapper {
         position: relative;
         font-size: clamp(2rem, 4vw, 3.5rem);
         line-height: 1;
+        font-weight: 700;
       }
 
       .title-shadow {
@@ -189,23 +193,22 @@ const title = "Stangroom UK";
         white-space: nowrap;
       }
 
-      .bottom {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
+      /* BOTTOM SPLIT */
+      .bottom { display: grid; grid-template-columns: 1fr 1fr; }
 
+      /* MOBILE FIX (FINAL) */
       @media (max-width: 800px) {
         .hero {
           display: flex;
           flex-direction: column;
-          height: calc(100vh - 70px); /* account for navbar */
+          height: calc(100vh - 70px);
           padding-top: 0;
         }
 
         .tile {
           flex: 1;
-          min-height: 0; /* CRITICAL: prevents overflow */
-          padding: 1.5rem; /* slightly tighter for mobile */
+          min-height: 0;
+          padding: 1.5rem;
         }
 
         .bottom {
@@ -213,27 +216,15 @@ const title = "Stangroom UK";
         }
       }
 
-      /* SECTIONS (IDENTICAL BASE) */
+      /* SECTIONS */
       section {
         min-height: 100vh;
         padding: 5rem 2rem;
         max-width: 900px;
         margin: 0 auto;
-
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
       }
 
-      section.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      section h2 {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-      }
+      section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
 
       section p {
         color: var(--muted);
@@ -247,27 +238,22 @@ const title = "Stangroom UK";
         background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
       }
 
-      /* SCROLL BUTTON */
-      .scroll-button {
-        display: inline-block;
-        margin-top: 2rem;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #fff;
-        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-        border-radius: 8px;
-        text-decoration: none;
+      /* FOOTER (MATCHED) */
+      footer {
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
       }
+
+      footer p { color: var(--muted); }
     </style>
   </head>
 
   <body>
 
-    <!-- NAVBAR (IDENTICAL INDEV) -->
+    <!-- NAVBAR -->
     <nav>
       <div></div>
-
       <div class="nav-links">
         <div class="dropdown">
           <a href="#">Services</a>
@@ -276,7 +262,6 @@ const title = "Stangroom UK";
             <a href="/indev">Explore by discipline</a>
           </div>
         </div>
-
         <a href="/illuminating-futures">Illuminating Futures</a>
         <a href="/contact">Contact</a>
       </div>
@@ -292,93 +277,86 @@ const title = "Stangroom UK";
       <!-- HERO -->
       <div class="hero">
 
-        <!-- LIVE EVENTS (APPROVED IMAGE) -->
-        <a href="#events"
-           class="tile"
-           style="background-image: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?w=1600&h=900&fit=crop&q=80');">
+        <!-- LIVE EVENTS -->
+        <a href="#events" class="tile lighting" style="background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063');">
           <h1 class="title-wrapper">
             <span class="title-shadow">Live Events</span>
             <span class="title-gradient">Live Events</span>
           </h1>
         </a>
 
+        <!-- FILM + BROADCAST -->
         <div class="bottom">
 
-          <a href="#film"
-             class="tile"
-             style="background-image: url('/images/placeholder.jpg');">
-            <h1 class="title-wrapper">
+          <a href="#film" class="tile power" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728');">
+            <h2 class="title-wrapper">
               <span class="title-shadow">Film</span>
               <span class="title-gradient">Film</span>
-            </h1>
+            </h2>
           </a>
 
-          <a href="#broadcast"
-             class="tile"
-             style="background-image: url('/images/placeholder.jpg');">
-            <h1 class="title-wrapper">
+          <a href="#broadcast" class="tile systems" style="background-image: url('https://images.unsplash.com/photo-1581091012184-7c6c43f1e6c4');">
+            <h2 class="title-wrapper">
               <span class="title-shadow">Broadcast</span>
               <span class="title-gradient">Broadcast</span>
-            </h1>
+            </h2>
+          </h2>
           </a>
 
         </div>
       </div>
 
-      <!-- CONTENT -->
+      <!-- SECTIONS -->
       <section id="events">
         <h2>Live Events</h2>
         <div class="divider"></div>
-        <p>Full technical delivery for concerts, festivals, touring productions, and corporate live events.</p>
+        <p>Lighting, power, and systems integration for concerts, festivals, and large-scale live productions.</p>
       </section>
 
       <section id="film">
         <h2>Film</h2>
         <div class="divider"></div>
-        <p>On-location and studio support for film production with integrated lighting and power workflows.</p>
+        <p>On-set lighting, temporary power distribution, and technical systems for film production environments.</p>
       </section>
 
       <section id="broadcast">
         <h2>Broadcast</h2>
         <div class="divider"></div>
-        <p>Broadcast-ready infrastructure supporting live transmission and multi-camera production systems.</p>
+        <p>Studio and outside broadcast systems, networking, RF coordination, and integrated technical delivery.</p>
       </section>
 
       <!-- FOOTER -->
-      <footer id="footer">
-        <h3>Contact</h3>
-        <p>
-          Email: <a href="mailto:enquiries@stangroom.uk" style="color: var(--accent2); text-decoration: underline;">enquiries@stangroom.uk</a><br />
-          Phone: +44 (0)1483 342 447<br />
-          Based in the UK — available for live events, film & broadcast
-        </p>
+      <footer>
+        <div style="max-width: 900px; margin: 0 auto;">
+          <h3 style="margin-bottom: 1rem;">Contact</h3>
 
-        <div style="margin-top: 2rem;">
-          <h3>Quick Links</h3>
-          <p>
-            <a href="/mission-statement" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">Mission Statement</a>
-            <a href="/reports-policies" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">Reports, certifications and policies</a>
+          <p style="color: var(--muted); line-height: 1.7;">
+            Email:
+            <a href="mailto:enquiries@stangroom.uk" style="color: var(--accent2); text-decoration: underline;">
+              enquiries@stangroom.uk
+            </a><br />
+
+            Phone: +44 (0)1483 342 447<br />
+
+            Based in the UK — available for live events, film & broadcast
           </p>
+
+          <div style="margin-top: 2rem;">
+            <h3 style="margin-bottom: 1rem;">Quick Links</h3>
+
+            <p style="color: var(--muted); line-height: 1.8;">
+              <a href="/mission-statement" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">
+                Mission Statement
+              </a>
+
+              <a href="/reports-policies" style="color: var(--text); text-decoration: none; display:block; opacity:0.85;">
+                Reports, certifications and policies
+              </a>
+            </p>
+          </div>
         </div>
       </footer>
 
-
     </main>
-
-    <!-- SCROLL ANIMATION (MATCHING INDEV STYLE) -->
-    <script>
-      const items = document.querySelectorAll('.tile, section');
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.15 });
-
-      items.forEach(el => observer.observe(el));
-    </script>
-
   </body>
 </html>
