@@ -1,0 +1,140 @@
+---
+const title = "Policies & Documents | Stangroom UK";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
+        --muted: #9aa0a6;
+
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      nav {
+        position: fixed;
+        width: 100%;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        background: rgba(0,0,0,0.5);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .dropdown { position: relative; }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background: rgba(0,0,0,0.9);
+      }
+      .dropdown:hover .dropdown-content { display: block; }
+
+      .blob {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.3;
+      }
+
+      main { padding-top: 70px; }
+
+      section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+      }
+
+      h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+
+      .divider {
+        width: 60px;
+        height: 4px;
+        margin: 1rem 0 2rem;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      }
+
+      ul {
+        list-style: none;
+        margin-top: 2rem;
+      }
+
+      li {
+        margin-bottom: 1rem;
+      }
+
+      a {
+        color: var(--accent2);
+        text-decoration: underline;
+      }
+
+      footer {
+        padding: 3rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <nav>
+      <div></div>
+      <div class="nav-links">
+        <div class="dropdown">
+          <a href="#">Services</a>
+          <div class="dropdown-content">
+            <a href="/sectors">Explore by sector</a>
+            <a href="/indev">Explore by discipline</a>
+          </div>
+        </div>
+        <a href="/illuminating-futures">Illuminating Futures</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <section>
+        <h1>Reports, Certifications & Policies</h1>
+        <div class="divider"></div>
+
+        <p>Download key documents and policies below.</p>
+
+        <ul>
+          <li><a href="#">Corporate Social Responsibility (PDF)</a></li>
+          <li><a href="#">Equality and Diversity (PDF)</a></li>
+          <li><a href="#">Environmental Statement (PDF)</a></li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>Email: enquiries@stangroom.uk</p>
+      </footer>
+
+    </main>
+  </body>
+</html>
