@@ -1,0 +1,212 @@
+---
+const title = "Mission Statement | Stangroom UK";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
+        --muted: #9aa0a6;
+
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      /* NAVBAR */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.95rem;
+        opacity: 0.85;
+      }
+
+      .nav-links a:hover { opacity: 1; }
+
+      .dropdown { position: relative; }
+
+      .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0,0,0,0.9);
+        border-radius: 8px;
+        padding: 0.5rem 0;
+        display: none;
+        min-width: 200px;
+      }
+
+      .dropdown:hover .dropdown-content { display: block; }
+
+      .dropdown::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 10px;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 0.6rem 1rem;
+      }
+
+      /* BLOBS */
+      .blob {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
+      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
+      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
+
+      main {
+        position: relative;
+        z-index: 1;
+        padding-top: 70px;
+      }
+
+      section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .divider {
+        width: 60px;
+        height: 4px;
+        margin: 1rem 0 2rem;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      footer {
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+      }
+
+      footer p { color: var(--muted); }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+    <!-- NAVBAR -->
+    <nav>
+      <div></div>
+      <div class="nav-links">
+        <div class="dropdown">
+          <a href="#">Services</a>
+          <div class="dropdown-content">
+            <a href="/sectors">Explore by sector</a>
+            <a href="/indev">Explore by discipline</a>
+          </div>
+        </div>
+        <a href="/illuminating-futures">Illuminating Futures</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <section>
+        <h1>Mission Statement</h1>
+        <div class="divider"></div>
+
+        <p>
+          Stangroom UK exists to deliver reliable, high-quality technical services across live events, film, and broadcast. The focus is on practical execution, strong collaboration, and ensuring that every production runs safely and efficiently.
+        </p>
+
+        <p>
+          By working across lighting, power, and systems, the aim is to provide a joined-up approach that supports both creative intent and technical requirements. This allows productions to operate smoothly, with clear communication between departments and dependable infrastructure on site.
+        </p>
+
+        <p>
+          Alongside technical delivery, there is a strong commitment to supporting the next generation of industry professionals. Through real-world experience and access to live environments, emerging talent can gain meaningful insight into how productions operate.
+        </p>
+
+        <p>
+          The goal is simple: deliver work that is dependable, professional, and forward-looking, while contributing positively to the wider industry.
+        </p>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <div style="max-width: 900px; margin: 0 auto;">
+          <h3>Contact</h3>
+          <p>
+            Email: enquiries@stangroom.uk<br />
+            Phone: +44 (0)1483 342 447<br />
+            Based in the UK — available for live events, film & broadcast
+          </p>
+
+          <div style="margin-top: 2rem;">
+            <h3>Quick Links</h3>
+            <p>
+              <a href="/mission-statement">Mission Statement</a><br />
+              <a href="/reports-policies">Reports, certifications and policies</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </body>
+</html>
