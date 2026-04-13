@@ -195,9 +195,21 @@ const title = "Stangroom UK";
       }
 
       @media (max-width: 800px) {
-        .hero { grid-template-rows: 1fr 1fr; }
-        .bottom { grid-template-columns: 1fr; }
-      }
+        .hero {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+        }
+
+  .tile {
+    height: 33.33vh;
+    min-height: 220px;
+  }
+
+  .bottom {
+    display: contents;
+  }
+}
 
       /* SECTIONS (IDENTICAL BASE) */
       section {
