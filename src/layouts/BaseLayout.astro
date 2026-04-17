@@ -1,0 +1,71 @@
+---
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
+        --muted: #9aa0a6;
+
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .blob {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
+      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
+      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
+
+      main {
+        position: relative;
+        z-index: 1;
+        padding-top: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Background blobs -->
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+    <!-- Shared Navbar -->
+    <slot name="navbar" />
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Shared Footer -->
+    <slot name="footer" />
+
+  </body>
+</html>
