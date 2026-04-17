@@ -12,6 +12,8 @@ import Footer from "../components/Footer.astro";
 
   <!-- HERO -->
   <div class="hero">
+
+    <!-- LIVE EVENTS -->
     <a href="#events" class="tile lighting" style="background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063');">
       <h1 class="title-wrapper">
         <span class="title-shadow">Live Events</span>
@@ -19,7 +21,9 @@ import Footer from "../components/Footer.astro";
       </h1>
     </a>
 
+    <!-- BOTTOM GRID -->
     <div class="bottom">
+
       <a href="#film" class="tile power" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728');">
         <h2 class="title-wrapper">
           <span class="title-shadow">Film</span>
@@ -33,26 +37,30 @@ import Footer from "../components/Footer.astro";
           <span class="title-gradient">Broadcast</span>
         </h2>
       </a>
+
     </div>
   </div>
 
-  <!-- SECTIONS -->
+  <!-- BODY CONTENT (RESTORED) -->
   <section id="events">
     <h2>Live Events</h2>
     <div class="divider"></div>
     <p>Lighting, power, and systems integration for concerts, festivals, and large-scale live productions.</p>
+    <p>From arena shows to outdoor festivals, we support production teams with scalable technical infrastructure.</p>
   </section>
 
   <section id="film">
     <h2>Film</h2>
     <div class="divider"></div>
     <p>On-set lighting, temporary power distribution, and technical systems for film production environments.</p>
+    <p>Working across commercials, features, and independent productions with flexible crew support.</p>
   </section>
 
   <section id="broadcast">
     <h2>Broadcast</h2>
     <div class="divider"></div>
     <p>Studio and outside broadcast systems, networking, RF coordination, and integrated technical delivery.</p>
+    <p>Ensuring reliable infrastructure for live transmission and studio environments.</p>
   </section>
 
   <Fragment slot="footer">
@@ -60,44 +68,65 @@ import Footer from "../components/Footer.astro";
   </Fragment>
 
   <style>
+    /* CRITICAL: prevent layout wrapper constraints */
+    :global(body) {
+      margin: 0;
+    }
+
     .hero {
+      width: 100%;
       height: 100vh;
       display: grid;
       grid-template-rows: 3fr 2fr;
-      padding-top: 70px;
     }
 
     .bottom {
+      width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 0; /* IMPORTANT: removes subtle overlap illusion */
     }
 
     .tile {
       position: relative;
       width: 100%;
+      height: 100%;
       display: flex;
       align-items: flex-end;
       padding: 2.5rem;
       text-decoration: none;
       background-size: cover;
       background-position: center;
+      overflow: hidden;
+      min-width: 0; /* CRITICAL grid fix */
     }
 
     .tile::after {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: 1;
       background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
     }
 
-    .tile.lighting::after { background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2)); }
-    .tile.power::after { background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2)); }
-    .tile.systems::after { background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2)); }
+    .tile.lighting::after {
+      background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2));
+    }
+
+    .tile.power::after {
+      background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2));
+    }
+
+    .tile.systems::after {
+      background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2));
+    }
 
     .title-wrapper {
       position: relative;
+      z-index: 2;
       font-size: clamp(2rem, 4vw, 3.5rem);
       line-height: 1;
+      font-weight: 700;
     }
 
     .title-shadow {
@@ -107,6 +136,7 @@ import Footer from "../components/Footer.astro";
       color: rgba(0,0,0,0.7);
       filter: blur(8px);
       z-index: 1;
+      white-space: nowrap;
     }
 
     .title-gradient {
@@ -115,8 +145,10 @@ import Footer from "../components/Footer.astro";
       background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      white-space: nowrap;
     }
 
+    /* MOBILE */
     @media (max-width: 800px) {
       .hero {
         grid-template-rows: 1fr 1fr 1fr;
@@ -127,11 +159,23 @@ import Footer from "../components/Footer.astro";
       }
     }
 
+    /* SECTIONS */
     section {
       min-height: 100vh;
       padding: 5rem 2rem;
       max-width: 900px;
       margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
     }
 
     .divider {
