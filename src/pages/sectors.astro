@@ -10,72 +10,69 @@ import Footer from "../components/Footer.astro";
     <Navbar />
   </Fragment>
 
-  <!-- PAGE CONTENT -->
-  <div class="hero">
-
-    <!-- LIVE EVENTS -->
-    <a href="#events" class="tile lighting" style="background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063');">
-      <h1 class="title-wrapper">
-        <span class="title-shadow">Live Events</span>
-        <span class="title-gradient">Live Events</span>
-      </h1>
-    </a>
-
-    <!-- FILM + BROADCAST -->
-    <div class="bottom">
-
-      <a href="#film" class="tile power" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728');">
-        <h2 class="title-wrapper">
-          <span class="title-shadow">Film</span>
-          <span class="title-gradient">Film</span>
-        </h2>
+  <main>
+    <!-- HERO -->
+    <div class="hero">
+      
+      <!-- LIVE EVENTS -->
+      <a href="#events" class="tile lighting" style="background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063');">
+        <h1 class="title-wrapper">
+          <span class="title-shadow">Live Events</span>
+          <span class="title-gradient">Live Events</span>
+        </h1>
       </a>
 
-      <a href="#broadcast" class="tile systems" style="background-image: url('https://images.unsplash.com/photo-1581091012184-7c6c43f1e6c4');">
-        <h2 class="title-wrapper">
-          <span class="title-shadow">Broadcast</span>
-          <span class="title-gradient">Broadcast</span>
-        </h2>
-      </a>
+      <!-- FILM + BROADCAST -->
+      <div class="bottom">
 
+        <a href="#film" class="tile power" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728');">
+          <h2 class="title-wrapper">
+            <span class="title-shadow">Film</span>
+            <span class="title-gradient">Film</span>
+          </h2>
+        </a>
+
+        <a href="#broadcast" class="tile systems" style="background-image: url('https://images.unsplash.com/photo-1581091012184-7c6c43f1e6c4');">
+          <h2 class="title-wrapper">
+            <span class="title-shadow">Broadcast</span>
+            <span class="title-gradient">Broadcast</span>
+          </h2>
+        </a>
+
+      </div>
     </div>
-  </div>
 
-  <!-- SECTIONS -->
-  <section id="events">
-    <h2>Live Events</h2>
-    <div class="divider"></div>
-    <p>
-      Lighting, power, and systems integration for concerts, festivals, and large-scale live productions.
-    </p>
-  </section>
+    <!-- SECTIONS -->
+    <section id="events">
+      <h2>Live Events</h2>
+      <div class="divider"></div>
+      <p>Lighting, power, and systems integration for concerts, festivals, and large-scale live productions.</p>
+    </section>
 
-  <section id="film">
-    <h2>Film</h2>
-    <div class="divider"></div>
-    <p>
-      On-set lighting, temporary power distribution, and technical systems for film production environments.
-    </p>
-  </section>
+    <section id="film">
+      <h2>Film</h2>
+      <div class="divider"></div>
+      <p>On-set lighting, temporary power distribution, and technical systems for film production environments.</p>
+    </section>
 
-  <section id="broadcast">
-    <h2>Broadcast</h2>
-    <div class="divider"></div>
-    <p>
-      Studio and outside broadcast systems, networking, RF coordination, and integrated technical delivery.
-    </p>
-  </section>
+    <section id="broadcast">
+      <h2>Broadcast</h2>
+      <div class="divider"></div>
+      <p>Studio and outside broadcast systems, networking, RF coordination, and integrated technical delivery.</p>
+    </section>
+  </main>
 
   <Fragment slot="footer">
     <Footer />
   </Fragment>
 
-  <!-- PAGE-SPECIFIC STYLES -->
   <style>
+    /* KEEP ORIGINAL LOGIC */
     .hero {
       height: 100vh;
       display: grid;
       grid-template-rows: 3fr 2fr;
+      padding-top: 70px; /* IMPORTANT: keep this */
     }
 
     .tile {
@@ -144,12 +141,13 @@ import Footer from "../components/Footer.astro";
       grid-template-columns: 1fr 1fr;
     }
 
-    /* MOBILE FIX */
+    /* MOBILE (keep your working version) */
     @media (max-width: 800px) {
       .hero {
         display: flex;
         flex-direction: column;
         height: calc(100vh - 70px);
+        padding-top: 0;
       }
 
       .tile {
