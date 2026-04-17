@@ -12,8 +12,6 @@ import Footer from "../components/Footer.astro";
 
   <!-- HERO -->
   <div class="hero">
-    
-    <!-- LIVE EVENTS -->
     <a href="#events" class="tile lighting" style="background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063');">
       <h1 class="title-wrapper">
         <span class="title-shadow">Live Events</span>
@@ -21,9 +19,7 @@ import Footer from "../components/Footer.astro";
       </h1>
     </a>
 
-    <!-- FILM + BROADCAST -->
     <div class="bottom">
-
       <a href="#film" class="tile power" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728');">
         <h2 class="title-wrapper">
           <span class="title-shadow">Film</span>
@@ -37,7 +33,6 @@ import Footer from "../components/Footer.astro";
           <span class="title-gradient">Broadcast</span>
         </h2>
       </a>
-
     </div>
   </div>
 
@@ -65,61 +60,44 @@ import Footer from "../components/Footer.astro";
   </Fragment>
 
   <style>
-    /* HERO */
     .hero {
-      height: calc(100vh - 70px);
+      height: 100vh;
       display: grid;
       grid-template-rows: 3fr 2fr;
+      padding-top: 70px;
     }
 
     .bottom {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: 100%;
     }
 
-    /* TILE */
     .tile {
       position: relative;
       width: 100%;
-      height: 100%;
       display: flex;
       align-items: flex-end;
       padding: 2.5rem;
       text-decoration: none;
       background-size: cover;
       background-position: center;
-      overflow: hidden; /* IMPORTANT */
     }
 
-    /* OVERLAY */
     .tile::after {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 1; /* BELOW TEXT */
       background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
     }
 
-    .tile.lighting::after {
-      background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2));
-    }
+    .tile.lighting::after { background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2)); }
+    .tile.power::after { background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2)); }
+    .tile.systems::after { background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2)); }
 
-    .tile.power::after {
-      background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2));
-    }
-
-    .tile.systems::after {
-      background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2));
-    }
-
-    /* TEXT FIX */
     .title-wrapper {
       position: relative;
-      z-index: 2; /* ABOVE OVERLAY */
       font-size: clamp(2rem, 4vw, 3.5rem);
       line-height: 1;
-      font-weight: 700;
     }
 
     .title-shadow {
@@ -129,7 +107,6 @@ import Footer from "../components/Footer.astro";
       color: rgba(0,0,0,0.7);
       filter: blur(8px);
       z-index: 1;
-      white-space: nowrap;
     }
 
     .title-gradient {
@@ -138,14 +115,11 @@ import Footer from "../components/Footer.astro";
       background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      white-space: nowrap;
     }
 
-    /* MOBILE */
     @media (max-width: 800px) {
       .hero {
         grid-template-rows: 1fr 1fr 1fr;
-        height: calc(100vh - 70px);
       }
 
       .bottom {
@@ -153,22 +127,11 @@ import Footer from "../components/Footer.astro";
       }
     }
 
-    /* SECTIONS */
     section {
       min-height: 100vh;
       padding: 5rem 2rem;
       max-width: 900px;
       margin: 0 auto;
-    }
-
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    section p {
-      color: var(--muted);
-      line-height: 1.7;
     }
 
     .divider {
