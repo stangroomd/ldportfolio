@@ -48,7 +48,8 @@ import Footer from "../components/Footer.astro";
       </div>
     </div>
 
-    <!-- LIGHTING -->
+    <!-- CONTENT -->
+
     <section id="lighting">
       <h2>Lighting</h2>
       <div class="divider"></div>
@@ -73,7 +74,6 @@ import Footer from "../components/Footer.astro";
       <a href="#footer" class="scroll-button">Realise your vision</a>
     </section>
 
-    <!-- POWER -->
     <section id="power">
       <h2>Power</h2>
       <div class="divider"></div>
@@ -84,17 +84,18 @@ import Footer from "../components/Footer.astro";
 
       <ul>
         <li>Provision and connection of generators and distribution systems</li>
-        <li>Effective coordination with other departments to ensure a balanced and reliable supply</li>
+        <li>Coordination with departments for stable and reliable supply</li>
         <li>Inspection, testing, and certification to <strong>BS 7671</strong>, <strong>BS 7909</strong></li>
-        <li>On-site support, monitoring, and troubleshooting during productions</li>
+        <li>On-site monitoring and troubleshooting during productions</li>
       </ul>
 
-      <p>Ensuring reliable, compliant, and optimised power delivery for every production environment.</p>
+      <p>
+        Ensuring reliable, compliant, and optimised power delivery for every production environment.
+      </p>
 
       <a href="#footer" class="scroll-button">Power your production</a>
     </section>
 
-    <!-- SYSTEMS -->
     <section id="systems">
       <h2>Systems</h2>
       <div class="divider"></div>
@@ -102,11 +103,11 @@ import Footer from "../components/Footer.astro";
       <p>Integrating and managing technical systems across sites and departments.</p>
 
       <ul>
-        <li>IP Networking and distribution scaled to your production's needs</li>
+        <li>IP Networking and distribution scaled to production needs</li>
         <li>RF spectrum surveying, interference analysis, and licensing</li>
         <li>Deployment of fixed-line and bonded internet connections</li>
-        <li>Interfacing, integration and management of diverse systems</li>
-        <li>Collaboration with dependent departments to streamline workflows</li>
+        <li>Interfacing and integration of diverse technical systems</li>
+        <li>Cross-department workflow optimisation</li>
       </ul>
 
       <p>Providing fully integrated, reliable, and scalable systems for complex productions.</p>
@@ -132,12 +133,6 @@ import Footer from "../components/Footer.astro";
       scroll-behavior: smooth;
     }
 
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-
     main {
       position: relative;
       z-index: 1;
@@ -158,12 +153,11 @@ import Footer from "../components/Footer.astro";
     .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
     .blob.three { background: var(--accent3); top: 50%; left: 60%; }
 
-    /* HERO */
+    /* HERO (FIXED — no padding-top) */
     .hero {
       height: 100vh;
       display: grid;
       grid-template-rows: 3fr 2fr;
-      padding-top: 70px;
     }
 
     .bottom {
@@ -282,8 +276,7 @@ import Footer from "../components/Footer.astro";
       .hero {
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 70px);
-        padding-top: 0;
+        height: 100vh;
       }
 
       .tile {
