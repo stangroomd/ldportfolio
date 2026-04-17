@@ -1,18 +1,25 @@
 <footer>
-  <div class="container">
+  <div class="footer-inner">
+
     <h3>Contact</h3>
 
     <p>
-      Email: <a href="mailto:enquiries@stangroom.uk">enquiries@stangroom.uk</a><br />
+      Email:
+      <a href="mailto:enquiries@stangroom.uk">
+        enquiries@stangroom.uk
+      </a><br />
+
       Phone: +44 (0)1483 342 447<br />
       Based in the UK — available for live events, film & broadcast
     </p>
 
-    <div class="links">
+    <div class="quick-links">
       <h3>Quick Links</h3>
+
       <a href="/mission-statement">Mission Statement</a>
       <a href="/reports-policies">Reports, certifications and policies</a>
     </div>
+
   </div>
 </footer>
 
@@ -23,27 +30,34 @@
     text-align: center;
   }
 
-  .container {
+  .footer-inner {
     max-width: 900px;
     margin: 0 auto;
   }
 
   footer p {
     color: var(--muted);
+    line-height: 1.7;
   }
 
   footer a {
+    color: var(--accent2);
+    text-decoration: underline;
+  }
+
+  .quick-links {
+    margin-top: 2rem;
+  }
+
+  .quick-links a {
     display: block;
     color: var(--text);
-    opacity: 0.85;
     text-decoration: none;
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
   }
 
-  footer a:hover {
+  .quick-links a:hover {
     opacity: 1;
-  }
-
-  .links {
-    margin-top: 2rem;
   }
 </style>
