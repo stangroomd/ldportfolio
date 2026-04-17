@@ -71,7 +71,8 @@ import Footer from "../components/Footer.astro";
         From concept to execution - ensuring lighting is visually impactful, safe, and seamlessly integrated with your production’s workflow.
       </p>
 
-      <a href="#footer" class="scroll-button">Realise your vision</a>
+      <!-- UPDATED -->
+      <a href="/contact" class="scroll-button">Realise your vision</a>
     </section>
 
     <section id="power">
@@ -93,7 +94,8 @@ import Footer from "../components/Footer.astro";
         Ensuring reliable, compliant, and optimised power delivery for every production environment.
       </p>
 
-      <a href="#footer" class="scroll-button">Power your production</a>
+      <!-- UPDATED -->
+      <a href="/contact" class="scroll-button">Power your production</a>
     </section>
 
     <section id="systems">
@@ -112,8 +114,9 @@ import Footer from "../components/Footer.astro";
 
       <p>Providing fully integrated, reliable, and scalable systems for complex productions.</p>
 
-      <a href="#footer" class="scroll-button">Empower your techs</a>
-      <a href="#footer" class="scroll-button">Empower your event</a>
+      <!-- UPDATED -->
+      <a href="/contact" class="scroll-button">Empower your techs</a>
+      <a href="/contact" class="scroll-button">Empower your event</a>
     </section>
 
     <Fragment slot="footer">
@@ -153,7 +156,7 @@ import Footer from "../components/Footer.astro";
     .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
     .blob.three { background: var(--accent3); top: 50%; left: 60%; }
 
-    /* HERO (FIXED — no padding-top) */
+    /* HERO */
     .hero {
       height: 100vh;
       display: grid;
@@ -165,7 +168,6 @@ import Footer from "../components/Footer.astro";
       grid-template-columns: 1fr 1fr;
     }
 
-    /* TILE */
     .tile {
       position: relative;
       width: 100%;
@@ -175,7 +177,6 @@ import Footer from "../components/Footer.astro";
       text-decoration: none;
       background-size: cover;
       background-position: center;
-
       transition: transform 0.4s ease;
       overflow: hidden;
       min-width: 0;
@@ -204,7 +205,6 @@ import Footer from "../components/Footer.astro";
       background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2));
     }
 
-    /* TEXT */
     .title-wrapper {
       position: relative;
       font-size: clamp(2rem, 4vw, 3.5rem);
@@ -228,7 +228,6 @@ import Footer from "../components/Footer.astro";
       white-space: nowrap;
     }
 
-    /* SECTIONS */
     section {
       min-height: 100vh;
       padding: 5rem 2rem;
@@ -253,7 +252,6 @@ import Footer from "../components/Footer.astro";
       background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
     }
 
-    /* BUTTON */
     .scroll-button {
       display: inline-block;
       margin-top: 2rem;
@@ -271,7 +269,6 @@ import Footer from "../components/Footer.astro";
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
 
-    /* MOBILE */
     @media (max-width: 800px) {
       .hero {
         display: flex;
