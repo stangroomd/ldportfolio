@@ -20,14 +20,29 @@ const { title } = Astro.props;
         --accent3: #ff4ecd;
       }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
 
       body {
         font-family: system-ui, -apple-system, sans-serif;
         background: var(--bg);
         color: var(--text);
+        overflow-x: hidden; /* FIX: stops navbar spill */
       }
 
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* BACKGROUND BLOBS (shared) */
       .blob {
         position: fixed;
         width: 500px;
@@ -41,31 +56,24 @@ const { title } = Astro.props;
       .blob.one { background: var(--accent1); top: -100px; left: -100px; }
       .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
       .blob.three { background: var(--accent3); top: 50%; left: 60%; }
-
-      main {
-        position: relative;
-        z-index: 1;
-        padding-top: 70px;
-      }
     </style>
   </head>
 
   <body>
-
-    <!-- Background blobs -->
+    <!-- BLOBS -->
     <div class="blob one"></div>
     <div class="blob two"></div>
     <div class="blob three"></div>
 
-    <!-- Shared Navbar -->
+    <!-- NAVBAR SLOT -->
     <slot name="navbar" />
 
+    <!-- PAGE CONTENT -->
     <main>
       <slot />
     </main>
 
-    <!-- Shared Footer -->
+    <!-- FOOTER SLOT -->
     <slot name="footer" />
-
   </body>
 </html>
