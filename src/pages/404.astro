@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { HOME } from "../consts";
+---
+
+<BaseLayout title="Page not found" noindex>
+	<section class="page-top">
+		<div class="container narrow">
+			<h1><span class="gradient-text">Lights out.</span></h1>
+			<p class="lead">That page doesn't exist, or it has moved.</p>
+			<div class="actions">
+				<a href={HOME} class="button">Back to home</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

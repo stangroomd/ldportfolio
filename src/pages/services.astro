@@ -1,0 +1,146 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { IMAGES } from "../consts";
+
+// Edit the three service categories here. Photos are set in src/consts.ts.
+const services = [
+	{
+		id: "light",
+		title: "Lighting & LED",
+		glow: "glow-1",
+		image: IMAGES.lighting,
+		intro:
+			"Hands-on support for anything that emits light. I can join your crew for a single day or look after a department for the full run.",
+		items: [
+			"Rigging, focusing and maintaining lighting fixtures, and building LED screens",
+			"Programming and operating on site",
+			"Fault-finding and support throughout the production",
+		],
+	},
+	{
+		id: "systems",
+		title: "Networks, RF & power",
+		glow: "glow-2",
+		image: IMAGES.systems,
+		intro:
+			"The systems that connect every department, built to be stable, scalable and clearly documented.",
+		items: [
+			"IP networks, data distribution and internet connectivity",
+			"RF spectrum surveys, coordination and licensing",
+			"Temporary power distribution, tested to BS 7671 and BS 7909",
+		],
+	},
+	{
+		id: "planning",
+		title: "Design & planning",
+		glow: "glow-3",
+		image: IMAGES.planning,
+		intro:
+			"Where it helps, I can be involved before load-in, so that what arrives on site works as intended.",
+		items: [
+			"System design and technical consultation",
+			"Pre-production, equipment and power planning",
+			"Clear documentation for the crew on site",
+		],
+	},
+];
+---
+
+<BaseLayout
+	title="Services"
+	description="Hands-on lighting and LED support, IP networking, RF coordination and power, plus design and planning, for live events, film and broadcast."
+>
+	<section class="page-top">
+		<div class="container">
+			<span class="eyebrow">Services</span>
+			<h1>Hands-on, from rig to <span class="gradient-text">show</span>.</h1>
+			<p class="lead">
+				Most of my work is on site as part of your crew, across live events, film and broadcast in the UK and Europe. Design and planning are available too.
+			</p>
+		</div>
+	</section>
+
+	{
+		services.map((s, i) => (
+			<section id={s.id}>
+				<div class:list={["container", "split", { flip: i % 2 }]}>
+					<div>
+						<h2>{s.title}</h2>
+						<div class="divider" />
+						<p>{s.intro}</p>
+						<ul>
+							{s.items.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</div>
+					<div
+						class={`visual ${s.glow}`}
+						style={s.image ? `background-image: url('${s.image}')` : undefined}
+						aria-hidden="true"
+					/>
+				</div>
+			</section>
+		))
+	}
+
+	<section class="cta">
+		<div class="container">
+			<p>Got a production coming up?</p>
+			<a href="/contact" class="button">Get in touch</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	section[id] {
+		padding: 3.5rem 0;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 1.2fr 1fr;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	.split.flip > :first-child {
+		order: 2;
+	}
+
+	/* Photo panel, or a stage-light placeholder when no photo is set */
+	.visual {
+		min-height: 300px;
+		border-radius: var(--radius);
+		border: 1px solid var(--border);
+		background-color: #111219;
+		background-image:
+			radial-gradient(ellipse 30% 80% at 30% 0%, var(--glow-solid) 0%, transparent 70%),
+			radial-gradient(ellipse 25% 70% at 70% 0%, var(--glow-solid) 0%, transparent 70%);
+		background-size: cover;
+		background-position: center;
+		opacity: 0.85;
+	}
+
+	.cta {
+		text-align: center;
+	}
+
+	.cta p {
+		font-size: 1.15rem;
+		color: var(--text);
+	}
+
+	@media (max-width: 760px) {
+		.split {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.split.flip > :first-child {
+			order: 0;
+		}
+		.visual {
+			min-height: 180px;
+		}
+	}
+</style>

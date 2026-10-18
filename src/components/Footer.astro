@@ -1,63 +1,85 @@
+---
+import { EMAIL, PHONE, PHONE_LINK, AREA, HOME } from "../consts";
+
+// Footer links. Pages listed here don't need to be in the main navigation.
+const links = [
+	{ href: "/mission-statement", label: "Mission statement" },
+	{ href: "/reports-policies", label: "Reports, certifications & policies" },
+	{ href: "/contact", label: "Contact" },
+];
+---
+
 <footer>
-  <div class="footer-inner">
+	<div class="container inner">
+		<div>
+			<a href={HOME} class="logo">stangroom<span class="gradient-text">.uk</span></a>
+			<p>
+				<a href={`mailto:${EMAIL}`}>{EMAIL}</a><br />
+				<a href={`tel:${PHONE_LINK}`}>{PHONE}</a><br />
+				{AREA}
+			</p>
+		</div>
 
-    <h3>Contact</h3>
-
-    <p>
-      Email:
-      <a href="mailto:enquiries@stangroom.uk">
-        enquiries@stangroom.uk
-      </a><br />
-
-      Phone: +44 (0)1483 342 447<br />
-      UK | Europe
-    </p>
-
-    <div class="quick-links">
-      <h3>Quick Links</h3>
-
-      <a href="/mission-statement">Mission Statement</a>
-      <a href="/reports-policies">Reports, certifications and policies</a>
-    </div>
-
-  </div>
+		<ul>
+			{links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+		</ul>
+	</div>
+	<p class="container copyright">&copy; {new Date().getFullYear()} stangroom.uk</p>
 </footer>
 
 <style>
-  footer {
-    padding: 3rem 2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    text-align: center;
-  }
+	footer {
+		position: relative;
+		z-index: 1;
+		border-top: 1px solid var(--border);
+		padding: 3rem 0 2rem;
+		font-size: 0.95rem;
+	}
 
-  .footer-inner {
-    max-width: 900px;
-    margin: 0 auto;
-  }
+	.inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 2rem;
+	}
 
-  footer p {
-    color: var(--muted);
-    line-height: 1.7;
-  }
+	.logo {
+		display: inline-block;
+		font-weight: 700;
+		color: var(--text);
+		text-decoration: none;
+		margin-bottom: 0.75rem;
+	}
 
-  footer a {
-    color: var(--accent2);
-    text-decoration: underline;
-  }
+	p a {
+		color: var(--muted);
+		text-decoration: none;
+	}
 
-  .quick-links {
-    margin-top: 2rem;
-  }
+	p a:hover {
+		color: var(--accent2);
+	}
 
-  .quick-links a {
-    display: block;
-    color: var(--text);
-    text-decoration: none;
-    opacity: 0.85;
-    margin-bottom: 0.5rem;
-  }
+	ul {
+		list-style: none;
+		padding: 0;
+	}
 
-  .quick-links a:hover {
-    opacity: 1;
-  }
+	ul a {
+		color: var(--text);
+		text-decoration: none;
+		opacity: 0.8;
+	}
+
+	ul a:hover {
+		opacity: 1;
+		text-decoration: underline;
+	}
+
+	.copyright {
+		margin-top: 2rem;
+		margin-bottom: 0;
+		font-size: 0.85rem;
+		opacity: 0.6;
+	}
 </style>

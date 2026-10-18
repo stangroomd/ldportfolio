@@ -1,155 +1,312 @@
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+  Site-wide styles. Colours live in :root — change them here and the
+  whole site follows.
+*/
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+	--bg: #0b0c10;
+	--surface: rgba(255, 255, 255, 0.03);
+	--border: rgba(255, 255, 255, 0.1);
+	--text: #eaeaf0;
+	--muted: #a3a9b0;
+
+	--accent1: #7c5cff;
+	--accent2: #00d4ff;
+	--accent3: #ff4ecd;
+	--gradient: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+
+	--width: 1000px;
+	--radius: 12px;
 }
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-body {
-	font-family: "Atkinson", sans-serif;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 5rem;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	background: var(--bg);
+	color: var(--text);
 	line-height: 1.7;
+	overflow-x: hidden;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
+
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+	position: relative;
+	z-index: 1;
+	flex: 1;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
-}
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
-a {
-	color: var(--accent);
-}
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
+
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	display: block;
 }
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
+
+a {
+	color: var(--accent2);
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent2);
+	outline-offset: 3px;
+}
+
+/* ---------- Background glow ---------- */
+
+.blob {
+	position: fixed;
+	width: 500px;
+	height: 500px;
+	border-radius: 50%;
+	filter: blur(120px);
+	opacity: 0.25;
+	z-index: 0;
+	pointer-events: none;
+}
+.blob.one { background: var(--accent1); top: -150px; left: -150px; }
+.blob.two { background: var(--accent2); bottom: -200px; right: -150px; }
+.blob.three { background: var(--accent3); top: 45%; left: 55%; opacity: 0.15; }
+
+/* ---------- Layout helpers ---------- */
+
+.container {
+	width: 100%;
+	max-width: var(--width);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.narrow {
+	max-width: 760px;
+}
+
+section {
+	padding: 5rem 0;
+}
+
+.page-top {
+	padding-top: 9rem;
+}
+
+/* ---------- Type ---------- */
+
+h1, h2, h3 {
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+h1 {
+	font-size: clamp(2.2rem, 5vw, 3.5rem);
+	margin-bottom: 1rem;
+}
+
+h2 {
+	font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+	margin-bottom: 1rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin: 2rem 0 0.5rem;
+}
+
+p, ul, ol {
+	color: var(--muted);
+	margin-bottom: 1rem;
+}
+
+ul, ol {
+	padding-left: 1.25rem;
+}
+
+li {
+	margin-bottom: 0.4rem;
+}
+
+strong {
+	color: var(--text);
+}
+
+.gradient-text {
+	background: var(--gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.lead {
+	font-size: 1.15rem;
+	max-width: 640px;
+}
+
+.eyebrow {
+	display: block;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--accent2);
+	margin-bottom: 0.75rem;
+}
+
+.divider {
+	width: 60px;
+	height: 4px;
+	margin: 1rem 0 2rem;
 	border-radius: 2px;
+	background: var(--gradient);
 }
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
-}
-hr {
+
+/* ---------- Buttons ---------- */
+
+.button {
+	display: inline-block;
+	padding: 0.8rem 1.6rem;
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-radius: 8px;
+	font: inherit;
+	font-weight: 600;
+	color: #fff;
+	background: var(--gradient);
+	text-decoration: none;
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+
+.button:hover {
+	transform: scale(1.03);
+	box-shadow: 0 6px 20px rgba(124, 92, 255, 0.35);
+}
+
+.button.ghost {
+	background: transparent;
+	border: 1px solid var(--border);
+}
+
+.button.ghost:hover {
+	border-color: var(--accent2);
+	box-shadow: none;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+/* ---------- Cards ---------- */
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+	gap: 1.5rem;
+}
+
+.card {
+	position: relative;
+	padding: 2rem;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: var(--surface);
+	text-decoration: none;
+	color: inherit;
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+a.card:hover {
+	border-color: rgba(0, 212, 255, 0.5);
+	transform: translateY(-3px);
+}
+
+.card h3 {
+	margin-top: 0;
+}
+
+.card p:last-child {
+	margin-bottom: 0;
+}
+
+/* Thin coloured light-strip across the top of a card */
+.card::before {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: 2rem;
+	right: 2rem;
+	height: 2px;
+	background: var(--glow, var(--gradient));
+	box-shadow: 0 0 18px var(--glow-solid, var(--accent2));
+}
+
+.glow-1 { --glow: var(--accent1); --glow-solid: var(--accent1); }
+.glow-2 { --glow: var(--accent2); --glow-solid: var(--accent2); }
+.glow-3 { --glow: var(--accent3); --glow-solid: var(--accent3); }
+
+/* ---------- Forms ---------- */
+
+label {
+	display: block;
+	font-size: 0.9rem;
+	font-weight: 600;
+	margin-bottom: 0.35rem;
+}
+
+input,
+textarea {
+	width: 100%;
+	padding: 0.85rem 1rem;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	color: var(--text);
+	font: inherit;
+}
+
+textarea {
+	min-height: 160px;
+	resize: vertical;
+}
+
+/* ---------- Prose (blog posts, long text) ---------- */
+
+.prose h2 { margin-top: 2.5rem; }
+.prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+.prose blockquote {
+	border-left: 3px solid var(--accent1);
+	padding-left: 1rem;
+	margin: 1.5rem 0;
+}
+.prose code {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	padding: 0.1rem 0.35rem;
 }
 
 .sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
+	position: absolute;
 	width: 1px;
+	height: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+	clip: rect(0 0 0 0);
 	white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	* { transition: none !important; }
 }

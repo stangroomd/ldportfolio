@@ -1,184 +1,85 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+
+const IF_EMAIL = "illuminating_futures@stangroom.uk";
 ---
 
-<BaseLayout title="Stangroom | Illuminating Futures">
+<BaseLayout
+	title="Illuminating Futures"
+	description="Illuminating Futures gives aspiring young people real-world experience by shadowing on live events, film and broadcast productions."
+>
+	<section class="page-top">
+		<div class="container narrow">
+			<span class="eyebrow">Illuminating Futures</span>
+			<blockquote>
+				<p class="quote gradient-text">
+					“The UK’s creative industries are world leading. But who gets the chance to build a career is still shaped by exclusion, informality, and inequality.”
+				</p>
+				<cite>Bectu</cite>
+			</blockquote>
+		</div>
+	</section>
 
-  <Fragment slot="navbar">
-    <Navbar />
-  </Fragment>
+	<section>
+		<div class="container narrow">
+			<h2>Why it exists</h2>
+			<div class="divider"></div>
+			<p>
+				Our sector can be hard for young people to get into. Recognised pathways are not always accessible to everyone, and gaining experience can be difficult when that very experience is often a requirement to get started.
+			</p>
+			<p>
+				Illuminating Futures offers aspiring young people real-world experience by shadowing me on a variety of productions. It gives an insight into the technical, creative and logistical sides of the industry, and it's a great addition to any CV.
+			</p>
 
-  <!-- Background blobs -->
-  <div class="blob one"></div>
-  <div class="blob two"></div>
-  <div class="blob three"></div>
+			<div class="cards">
+				<div class="card glow-1">
+					<h3>For young people</h3>
+					<p>
+						If you're passionate, curious and eager to learn, this is a chance to experience the industry first-hand.
+					</p>
+					<p>
+						Email <a href={`mailto:${IF_EMAIL}`}>{IF_EMAIL}</a> telling me about your interest, and I'll find an opportunity near you.
+					</p>
+					<p>If you're under 16, please ask a parent or carer to contact me for you.</p>
+				</div>
 
-  <main>
-
-    <!-- HERO -->
-    <div class="hero-image">
-      <h1>
-        "The UK’s creative industries are world leading. But who gets the chance to build a career is still shaped by exclusion, informality, and inequality."
-        <br /><br />
-        <i>-BECTU</i>
-      </h1>
-    </div>
-
-    <!-- CONTENT -->
-    <section id="illuminating-futures">
-      <h2>Illuminating Futures</h2>
-      <div class="divider"></div>
-
-      <p>
-        Our sector can be hard for young people to get into. Recognised pathways are not always accessible to everyone,
-        and gaining experience can be difficult when that very experience is often a requirement to get started.
-      </p>
-
-      <p>
-        I offer opportunities for aspirational young people to gain real-world experience by shadowing me on a variety of productions.
-      </p>
-
-      <p>
-        This provides insight into the technical, creative, and logistical aspects of working in the industry, and it’s a great addition to any CV.
-      </p>
-
-      <h3>How to get involved</h3>
-
-      <p>
-        If you're passionate, curious, and eager to learn, this is a chance to experience the industry first-hand.
-      </p>
-
-      <p>
-        Send a message to
-        <a href="mailto:illuminating_futures@stangroom.uk">illuminating_futures@stangroom.uk</a>
-        telling us about your interest, and we’ll find an opportunity near to you.
-      </p>
-
-      <p>
-        If you’re under the age of 16, have a parent or carer contact us for you.
-      </p>
-
-      <h3>How it works, for businesses</h3>
-
-      <p>
-        This programme is designed to be as transparent as possible to clients, production companies, contractors and fellow techs alike.
-      </p>
-
-      <p>
-        Participants attend voluntarily, with no contracts, obligations, impact on invoicing or on professional services rendered.
-        All logistics are handled on my end, with only your support in relevant safeguarding duties needed.
-      </p>
-
-      <p>
-        For more information contact:
-        <a href="mailto:illuminating_futures@stangroom.uk">illuminating_futures@stangroom.uk</a>
-      </p>
-    </section>
-
-    <Fragment slot="footer">
-      <Footer />
-    </Fragment>
-
-  </main>
-
-  <style>
-    :global(*) {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* BLOBS */
-    .blob {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.3;
-      z-index: 0;
-    }
-
-    .blob.one { background: var(--accent1); top: -100px; left: -100px; }
-    .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
-    .blob.three { background: var(--accent3); top: 50%; left: 60%; }
-
-    /* HERO (now consistent with other pages: no padding-top) */
-    .hero-image {
-      position: relative;
-      background: url('/images/hero-placeholder.png') center/cover no-repeat;
-      height: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-
-    .hero-image h1 {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      padding: 0 2rem;
-      text-align: center;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.3;
-    }
-
-    /* CONTENT */
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
-
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    section h3 {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    section p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-
-    section a {
-      color: var(--accent2);
-      text-decoration: underline;
-    }
-
-    .divider {
-      width: 60px;
-      height: 4px;
-      margin: 1rem 0 2rem;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-    }
-  </style>
-
+				<div class="card glow-2">
+					<h3>For businesses</h3>
+					<p>
+						The programme is designed to be transparent to clients, production companies, contractors and fellow technicians alike.
+					</p>
+					<p>
+						Participants attend voluntarily, with no contracts, obligations, or impact on invoicing or the services provided. I handle all the logistics; all I ask is your support with relevant safeguarding duties.
+					</p>
+					<p>Questions? <a href={`mailto:${IF_EMAIL}`}>{IF_EMAIL}</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
 </BaseLayout>
+
+<style>
+	blockquote {
+		margin: 2rem 0 0;
+	}
+
+	.quote {
+		font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+		font-weight: 700;
+		line-height: 1.3;
+		margin-bottom: 1rem;
+	}
+
+	cite {
+		color: var(--muted);
+		font-style: normal;
+	}
+
+	cite::before {
+		content: "— ";
+	}
+
+	.cards {
+		margin-top: 2.5rem;
+	}
+</style>

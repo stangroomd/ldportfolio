@@ -1,291 +1,167 @@
 ---
+// The new homepage, in development. The live homepage (src/pages/index.astro)
+// shows "Coming Soon" until this is ready. See README.md to switch over.
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import { IMAGES } from "../consts";
 ---
 
-<BaseLayout title="Stangroom UK">
+<BaseLayout noindex>
+	<!-- HERO -->
+	<div
+		class:list={["hero", { "has-image": IMAGES.hero }]}
+		style={IMAGES.hero ? `--hero-image: url('${IMAGES.hero}')` : undefined}
+	>
+		<div class="container">
+			<span class="eyebrow">Live events · Film · Broadcast</span>
+			<h1>
+				Light, and the systems<br />
+				<span class="gradient-text">behind it.</span>
+			</h1>
+			<p class="lead">
+				A freelance technician for lighting and LED, with the IP networking, RF and power systems that keep it all connected. Hands-on support on site, with design and planning when you need it.
+			</p>
+			<div class="actions">
+				<a href="/contact" class="button">Get in touch</a>
+				<a href="/services" class="button ghost">See services</a>
+			</div>
+		</div>
+	</div>
 
-  <Fragment slot="navbar">
-    <Navbar />
-  </Fragment>
+	<!-- WHAT I DO -->
+	<section>
+		<div class="container">
+			<h2>What I do</h2>
+			<div class="divider"></div>
 
-  <!-- Background blobs -->
-  <div class="blob one"></div>
-  <div class="blob two"></div>
-  <div class="blob three"></div>
+			<div class="cards">
+				<a href="/services#light" class="card glow-1">
+					<h3>Lighting &amp; LED</h3>
+					<p>If it emits light, I can rig it, programme it and run it, from lighting fixtures to LED screens.</p>
+				</a>
+				<a href="/services#systems" class="card glow-2">
+					<h3>Networks, RF &amp; power</h3>
+					<p>IP networking, RF coordination and temporary power, built so every department can rely on it.</p>
+				</a>
+				<a href="/services#planning" class="card glow-3">
+					<h3>Design &amp; planning</h3>
+					<p>Pre-production support, from system design and equipment planning through to paperwork and prep.</p>
+				</a>
+			</div>
+		</div>
+	</section>
 
-  <main>
+	<!-- HOW I WORK -->
+	<section>
+		<div class="container narrow">
+			<h2>Your production, carried through</h2>
+			<div class="divider"></div>
+			<p>
+				Every production has its own demands, pressures and identity. I work alongside producers, designers and technical teams as an extra pair of experienced hands, focused on getting your vision into reality safely, reliably and on time.
+			</p>
+			<p>
+				Whether you need a crew member for the day, a technician to look after a system for the full run, or someone to plan it from the start, all work is delivered to a high standard of safety and compliance.
+			</p>
+			<p><a href="/mission-statement">Read my mission statement →</a></p>
+		</div>
+	</section>
 
-    <!-- HERO -->
-    <div class="hero">
+	<!-- ILLUMINATING FUTURES -->
+	<section>
+		<div class="container">
+			<div class="card glow-3 feature">
+				<span class="eyebrow">Illuminating Futures</span>
+				<h2>Opening doors for young people</h2>
+				<p>
+					The industry can be hard to get into. Through Illuminating Futures, aspiring young people can shadow me on real productions and gain experience that is otherwise hard to come by.
+				</p>
+				<a href="/illuminating-futures" class="button ghost">Find out more</a>
+			</div>
+		</div>
+	</section>
 
-      <!-- LIGHTING -->
-      <a href="#lighting" class="tile lighting" style="background-image: url('/images/lighting.png');">
-        <h1 class="title-wrapper">
-          <span class="title-shadow">Lighting</span>
-          <span class="title-gradient">Lighting</span>
-        </h1>
-      </a>
-
-      <!-- POWER + SYSTEMS -->
-      <div class="bottom">
-
-        <a href="#power" class="tile power" style="background-image: url('https://images.openai.com/static-rsc-4/Z6-2wMI0_rdfCV63UWBVQ8pUT9rL6uiZbR2NpGsVlri-B8au_UWWExVDxCFrJo8zBNH9rXWJPJO1U8rVo4_l8rSu8VtdpB5dybe54LbJUiDC11KSS1zvgTsYJ42s0onuBTl85dbBNDz-YEiyQaFB1zDRrT7R3vMMqTViQGULNQSpVa9o1bSgUvgvntVl_7L2?purpose=fullsize');">
-          <h2 class="title-wrapper">
-            <span class="title-shadow">Power</span>
-            <span class="title-gradient">Power</span>
-          </h2>
-        </a>
-
-        <a href="#systems" class="tile systems" style="background-image: url('https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg');">
-          <h2 class="title-wrapper">
-            <span class="title-shadow">Systems</span>
-            <span class="title-gradient">Systems</span>
-          </h2>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- CONTENT -->
-
-    <section id="lighting">
-      <h2>Lighting</h2>
-      <div class="divider"></div>
-
-      <p>
-        Providing comprehensive lighting solutions across <strong>live events</strong>, <strong>film</strong>, and <strong>broadcast</strong>.
-        Whether you need full turnkey services or targeted support, we can deliver exactly what your production requires.
-      </p>
-
-      <ul>
-        <li>Full turnkey lighting solutions for events, shoots, or broadcasts</li>
-        <li>Pre-production support and prep work, including design consultation</li>
-        <li>Rigging and truss setup for temporary or permanent installations</li>
-        <li>Automation and programming designed to support your event and crew</li>
-        <li>On-site operation and technical support throughout your production</li>
-      </ul>
-
-      <p>
-        From concept to execution - ensuring lighting is visually impactful, safe, and seamlessly integrated with your production’s workflow.
-      </p>
-
-      <!-- UPDATED -->
-      <a href="/contact" class="scroll-button">Realise your vision</a>
-    </section>
-
-    <section id="power">
-      <h2>Power</h2>
-      <div class="divider"></div>
-
-      <p>
-        Providing complete temporary power solutions for <strong>live events</strong>, <strong>film</strong>, and <strong>broadcast</strong>.
-      </p>
-
-      <ul>
-        <li>Provision and connection of generators and distribution systems</li>
-        <li>Coordination with departments for stable and reliable supply</li>
-        <li>Inspection, testing, and certification to <strong>BS 7671</strong>, <strong>BS 7909</strong></li>
-        <li>On-site monitoring and troubleshooting during productions</li>
-      </ul>
-
-      <p>
-        Ensuring reliable, compliant, and optimised power delivery for every production environment.
-      </p>
-
-      <!-- UPDATED -->
-      <a href="/contact" class="scroll-button">Power your production</a>
-    </section>
-
-    <section id="systems">
-      <h2>Systems</h2>
-      <div class="divider"></div>
-
-      <p>Integrating and managing technical systems across sites and departments.</p>
-
-      <ul>
-        <li>IP Networking and distribution scaled to production needs</li>
-        <li>RF spectrum surveying, interference analysis, and licensing</li>
-        <li>Deployment of fixed-line and bonded internet connections</li>
-        <li>Interfacing and integration of diverse technical systems</li>
-        <li>Cross-department workflow optimisation</li>
-      </ul>
-
-      <p>Providing fully integrated, reliable, and scalable systems for complex productions.</p>
-
-      <!-- UPDATED -->
-      <a href="/contact" class="scroll-button">Empower your techs</a>
-      <a href="/contact" class="scroll-button">Empower your event</a>
-    </section>
-
-    <Fragment slot="footer">
-      <Footer />
-    </Fragment>
-
-  </main>
-
-  <style>
-    :global(*) {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* BLOBS */
-    .blob {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.3;
-      z-index: 0;
-    }
-
-    .blob.one { background: var(--accent1); top: -100px; left: -100px; }
-    .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
-    .blob.three { background: var(--accent3); top: 50%; left: 60%; }
-
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: grid;
-      grid-template-rows: 3fr 2fr;
-    }
-
-    .bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .tile {
-      position: relative;
-      width: 100%;
-      display: flex;
-      align-items: flex-end;
-      padding: 2.5rem;
-      text-decoration: none;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.4s ease;
-      overflow: hidden;
-      min-width: 0;
-    }
-
-    .tile:hover {
-      transform: scale(1.01);
-    }
-
-    .tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
-    }
-
-    .tile.lighting::after {
-      background: linear-gradient(to top, rgba(124,92,255,0.5), rgba(0,0,0,0.2));
-    }
-
-    .tile.power::after {
-      background: linear-gradient(to top, rgba(0,212,255,0.5), rgba(0,0,0,0.2));
-    }
-
-    .tile.systems::after {
-      background: linear-gradient(to top, rgba(255,78,205,0.5), rgba(0,0,0,0.2));
-    }
-
-    .title-wrapper {
-      position: relative;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1;
-    }
-
-    .title-shadow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: rgba(0,0,0,0.7);
-      filter: blur(8px);
-      white-space: nowrap;
-    }
-
-    .title-gradient {
-      position: relative;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      white-space: nowrap;
-    }
-
-    section {
-      min-height: 100vh;
-      padding: 5rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    section p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .divider {
-      width: 60px;
-      height: 4px;
-      margin: 1rem 0 2rem;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-    }
-
-    .scroll-button {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      font-weight: 600;
-      color: #fff;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .scroll-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-
-    @media (max-width: 800px) {
-      .hero {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-      }
-
-      .tile {
-        flex: 1;
-        min-height: 0;
-        padding: 1.5rem;
-      }
-
-      .bottom {
-        display: contents;
-      }
-    }
-  </style>
-
+	<!-- CTA -->
+	<section class="cta">
+		<div class="container">
+			<h2>Got a production coming up?</h2>
+			<p>Tell me what you're working on, and when.</p>
+			<div class="actions">
+				<a href="/contact" class="button">Get in touch</a>
+			</div>
+		</div>
+	</section>
 </BaseLayout>
+
+<style>
+	.hero {
+		position: relative;
+		display: flex;
+		align-items: center;
+		min-height: 92vh;
+		padding: 8rem 0 4rem;
+		overflow: hidden;
+	}
+
+	/* Placeholder: stage-light beams drawn in CSS. Faded out at the bottom
+	   so it blends into the page. */
+	.hero::before {
+		content: "";
+		position: absolute;
+		inset: -10% 0 0;
+		background:
+			conic-gradient(from 158deg at 12% 0%, transparent 0deg, rgba(0, 212, 255, 0.32) 11deg, transparent 22deg, transparent),
+			conic-gradient(from 170deg at 33% 0%, transparent 0deg, rgba(124, 92, 255, 0.42) 10deg, transparent 20deg, transparent),
+			conic-gradient(from 176deg at 50% 0%, transparent 0deg, rgba(255, 78, 205, 0.32) 8deg, transparent 16deg, transparent),
+			conic-gradient(from 182deg at 67% 0%, transparent 0deg, rgba(124, 92, 255, 0.42) 10deg, transparent 20deg, transparent),
+			conic-gradient(from 192deg at 88% 0%, transparent 0deg, rgba(0, 212, 255, 0.32) 11deg, transparent 22deg, transparent);
+		filter: blur(6px);
+		-webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+		mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+	}
+
+	/* Photo, when one is set in src/consts.ts: darkened on the left so the
+	   text stays readable, and faded out at the bottom. */
+	.hero.has-image::before {
+		inset: 0;
+		background:
+			linear-gradient(90deg, rgba(11, 12, 16, 0.92) 0%, rgba(11, 12, 16, 0.6) 60%, rgba(11, 12, 16, 0.3) 100%),
+			var(--hero-image) center / cover no-repeat;
+		filter: none;
+		-webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+		mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+	}
+
+	.hero .container {
+		position: relative;
+		z-index: 1;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+	}
+
+	.hero .lead {
+		color: #c9ccd2;
+	}
+
+	.feature {
+		padding: 3rem;
+	}
+
+	.feature p {
+		max-width: 640px;
+	}
+
+	.cta {
+		text-align: center;
+	}
+
+	.cta .actions {
+		justify-content: center;
+	}
+
+	@media (max-width: 560px) {
+		.feature {
+			padding: 2rem 1.5rem;
+		}
+	}
+</style>
