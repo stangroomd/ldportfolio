@@ -1,4 +1,6 @@
 ---
+import { HOME } from "../consts";
+
 // Main navigation. Add or remove links in this list.
 const links = [
 	{ href: "/services", label: "Services" },
@@ -11,7 +13,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 <header>
 	<nav class="container" aria-label="Main">
-		<a href="/" class="logo">stangroom<span class="gradient-text">.uk</span></a>
+		<a href={HOME} class="logo">stangroom<span class="gradient-text">.uk</span></a>
 		<ul>
 			{
 				links.map((link) => (

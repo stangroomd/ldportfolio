@@ -1,5 +1,5 @@
 ---
-import { EMAIL, PHONE, PHONE_LINK, AREA } from "../consts";
+import { EMAIL, PHONE, PHONE_LINK, AREA, HOME } from "../consts";
 
 // Footer links. Pages listed here don't need to be in the main navigation.
 const links = [
@@ -12,7 +12,7 @@ const links = [
 <footer>
 	<div class="container inner">
 		<div>
-			<a href="/" class="logo">stangroom<span class="gradient-text">.uk</span></a>
+			<a href={HOME} class="logo">stangroom<span class="gradient-text">.uk</span></a>
 			<p>
 				<a href={`mailto:${EMAIL}`}>{EMAIL}</a><br />
 				<a href={`tel:${PHONE_LINK}`}>{PHONE}</a><br />

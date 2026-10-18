@@ -10,12 +10,12 @@ export default defineConfig({
 	site: "https://stangroom.uk",
 	integrations: [
 		mdx(),
-		// The blog is hidden for now, so keep it out of the sitemap.
-		sitemap({ filter: (page) => !page.includes("/blog") }),
+		// The blog and the in-development homepage are hidden for now,
+		// so keep them out of the sitemap.
+		sitemap({ filter: (page) => !page.includes("/blog") && !page.includes("/indev") }),
 	],
 	// Old addresses that now live elsewhere.
 	redirects: {
-		"/indev": "/services",
 		"/sectors": "/services",
 	},
 	adapter: cloudflare({

@@ -1,144 +1,165 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Coming Soon";
 ---
 
-<BaseLayout>
-	<!-- HERO -->
-	<div class="hero">
-		<div class="container">
-			<span class="eyebrow">Live events · Film · Broadcast</span>
-			<h1>
-				Light, and the systems<br />
-				<span class="gradient-text">behind it.</span>
-			</h1>
-			<p class="lead">
-				A freelance technician for lighting, LED, special and visual effects, with the IP networking and RF systems that keep it all connected. Hands-on support on site, with design and planning when you need it.
-			</p>
-			<div class="actions">
-				<a href="/contact" class="button">Get in touch</a>
-				<a href="/services" class="button ghost">See services</a>
-			</div>
-		</div>
-	</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
 
-	<!-- WHAT I DO -->
-	<section>
-		<div class="container">
-			<h2>What I do</h2>
-			<div class="divider"></div>
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --text: #eaeaf0;
+        --muted: #9aa0a6;
 
-			<div class="cards">
-				<a href="/services#light" class="card glow-1">
-					<h3>Lighting &amp; effects</h3>
-					<p>If it emits light, I can rig it, programme it and run it: fixtures, LED, special and visual effects.</p>
-				</a>
-				<a href="/services#systems" class="card glow-2">
-					<h3>Networks, RF &amp; power</h3>
-					<p>IP networking, RF coordination, connectivity and temporary power, built so every department can rely on it.</p>
-				</a>
-				<a href="/services#planning" class="card glow-3">
-					<h3>Design &amp; planning</h3>
-					<p>Pre-production support, from system design and equipment planning through to paperwork and prep.</p>
-				</a>
-			</div>
-		</div>
-	</section>
+        /* Accent colours */
+        --accent1: #7c5cff;
+        --accent2: #00d4ff;
+        --accent3: #ff4ecd;
+      }
 
-	<!-- HOW I WORK -->
-	<section>
-		<div class="container narrow">
-			<h2>Your production, carried through</h2>
-			<div class="divider"></div>
-			<p>
-				Every production has its own demands, pressures and identity. I work alongside producers, designers and technical teams as an extra pair of experienced hands, focused on getting your vision into reality safely, reliably and on time.
-			</p>
-			<p>
-				Whether you need a crew member for the day, a technician to look after a system for the full run, or someone to plan it from the start, all work is delivered to a high standard of safety and compliance.
-			</p>
-			<p><a href="/mission-statement">Read my mission statement →</a></p>
-		</div>
-	</section>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-	<!-- ILLUMINATING FUTURES -->
-	<section>
-		<div class="container">
-			<div class="card glow-3 feature">
-				<span class="eyebrow">Illuminating Futures</span>
-				<h2>Opening doors for young people</h2>
-				<p>
-					The industry can be hard to get into. Through Illuminating Futures, aspiring young people can shadow me on real productions and gain experience that is otherwise hard to come by.
-				</p>
-				<a href="/illuminating-futures" class="button ghost">Find out more</a>
-			</div>
-		</div>
-	</section>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: radial-gradient(circle at 20% 20%, #15172b, var(--bg));
+        color: var(--text);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
 
-	<!-- CTA -->
-	<section class="cta">
-		<div class="container">
-			<h2>Got a production coming up?</h2>
-			<p>Tell me what you're working on, and when.</p>
-			<div class="actions">
-				<a href="/contact" class="button">Get in touch</a>
-			</div>
-		</div>
-	</section>
-</BaseLayout>
+      /* Soft animated blobs */
+      .blob {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.5;
+        animation: float 20s infinite ease-in-out alternate;
+      }
 
-<style>
-	.hero {
-		position: relative;
-		display: flex;
-		align-items: center;
-		min-height: 92vh;
-		padding: 8rem 0 4rem;
-	}
+      .blob.one {
+        background: var(--accent1);
+        top: -100px;
+        left: -100px;
+      }
 
-	/* Photo, darkened on the left for readable text and faded out at the
-	   bottom so it blends into the page */
-	.hero::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background:
-			linear-gradient(90deg, rgba(11, 12, 16, 0.92) 0%, rgba(11, 12, 16, 0.6) 60%, rgba(11, 12, 16, 0.3) 100%),
-			url("/images/stage.webp") center / cover no-repeat;
-		-webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-		mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-	}
+      .blob.two {
+        background: var(--accent2);
+        bottom: -150px;
+        right: -100px;
+        animation-delay: 5s;
+      }
 
-	.hero .container {
-		position: relative;
-		z-index: 1;
-	}
+      .blob.three {
+        background: var(--accent3);
+        top: 40%;
+        left: 60%;
+        animation-delay: 10s;
+      }
 
-	.hero h1 {
-		font-size: clamp(2.5rem, 6.5vw, 4.5rem);
-	}
+      @keyframes float {
+        from {
+          transform: translateY(0px) translateX(0px) scale(1);
+        }
+        to {
+          transform: translateY(50px) translateX(-50px) scale(1.1);
+        }
+      }
 
-	.hero .lead {
-		color: #c9ccd2;
-	}
+      .container {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 2rem;
+        max-width: 700px;
+      }
 
-	.feature {
-		padding: 3rem;
-	}
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
 
-	.feature p {
-		max-width: 640px;
-	}
+        background: linear-gradient(
+          90deg,
+          var(--accent1),
+          var(--accent2),
+          var(--accent3)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-	.cta {
-		text-align: center;
-	}
+      p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
 
-	.cta .actions {
-		justify-content: center;
-	}
+      .divider {
+        width: 60px;
+        height: 4px;
+        margin: 1.5rem auto;
+        background: linear-gradient(
+          90deg,
+          var(--accent1),
+          var(--accent2),
+          var(--accent3)
+        );
+        border-radius: 2px;
+      }
 
-	@media (max-width: 560px) {
-		.feature {
-			padding: 2rem 1.5rem;
-		}
-	}
-</style>
+      .footer {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 2rem;
+        opacity: 0.7;
+      }
+
+      a {
+        color: var(--accent2);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Background blobs -->
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+    <main class="container">
+      <h1>Coming Soon</h1>
+      <div class="divider"></div>
+
+      <p>
+        Business enquiries: <a href="mailto:enquiries@stangroom.uk">enquiries@stangroom.uk</a><br />
+      </p>
+
+      <p>
+        Check back soon for updates.
+      </p>
+
+      <div class="footer">
+        &copy; {new Date().getFullYear()} stangroom.uk
+      </div>
+    </main>
+  </body>
+</html>

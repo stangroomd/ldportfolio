@@ -6,12 +6,13 @@ Website for stangroom.uk, built with [Astro](https://astro.build) and deployed o
 
 | To change… | Edit |
 | :-- | :-- |
-| Email, phone, site description | `src/consts.ts` |
+| Email, phone, site description, photos | `src/consts.ts` |
 | Colours and fonts | `src/styles/global.css` (the `:root` block at the top) |
 | Menu links | `src/components/Navbar.astro` |
 | Footer links | `src/components/Footer.astro` |
-| Home page | `src/pages/index.astro` |
-| Services (text, bullet points, photos) | the list at the top of `src/pages/services.astro` |
+| "Coming Soon" page (the live homepage) | `src/pages/index.astro` |
+| New homepage (in development, at `/indev`) | `src/pages/indev.astro` |
+| Services (the three categories and their bullet points) | the list at the top of `src/pages/services.astro` |
 | Policy PDFs | add the file to `public/policies/`, then add a line to `src/pages/reports-policies.astro` |
 | Blog posts | `src/content/blog/` (copy `example-post.md` to start a new one) |
 
@@ -19,7 +20,21 @@ Each page in `src/pages/` becomes a web address: `contact.astro` → `/contact`.
 
 ### Images
 
-Put images in `public/images/` and refer to them as `/images/name.webp`. WebP or JPG at around 1600–2000px wide keeps pages fast.
+Each photo slot is set in the `IMAGES` list in `src/consts.ts`. Until a photo is set, a stage-light effect drawn in CSS is shown instead.
+
+1. Put the photo in `public/images/`, e.g. `public/images/hero.webp`.
+2. Enter its path in `src/consts.ts`, e.g. `hero: "/images/hero.webp"`.
+
+WebP or JPG at around 1600–2000px wide keeps pages fast. Only use photos you have the rights to.
+
+### Launching the new homepage
+
+The live homepage shows "Coming Soon". The new homepage is at `/indev`, hidden from search engines and the sitemap. When it's ready:
+
+1. Delete `src/pages/index.astro`, then rename `src/pages/indev.astro` to `index.astro`.
+2. In that file, change `<BaseLayout noindex>` to `<BaseLayout>`.
+3. In `src/consts.ts`, change `HOME` to `"/"`.
+4. In `astro.config.mjs`, remove `&& !page.includes("/indev")` from the sitemap line, and add `"/indev": "/",` under `redirects`.
 
 ### Blog
 

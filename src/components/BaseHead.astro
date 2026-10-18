@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, IMAGES } from "../consts";
 
 interface Props {
 	title?: string;
@@ -9,11 +9,11 @@ interface Props {
 	noindex?: boolean;
 }
 
-const { title, description = SITE_DESCRIPTION, image = "/images/stage.webp", noindex = false } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image = IMAGES.hero, noindex = false } = Astro.props;
 
 const fullTitle = title ? `${title} | ${SITE_TITLE}` : `${SITE_TITLE} | Lighting & Systems Technician`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const imageURL = new URL(image, Astro.site);
+const imageURL = image ? new URL(image, Astro.site) : undefined;
 ---
 
 <meta charset="utf-8" />
@@ -21,7 +21,7 @@ const imageURL = new URL(image, Astro.site);
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="canonical" href={canonicalURL} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+{noindex && <meta name="robots" content="noindex" />}
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
@@ -31,5 +31,5 @@ const imageURL = new URL(image, Astro.site);
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={imageURL} />
-<meta name="twitter:card" content="summary_large_image" />
+{imageURL && <meta property="og:image" content={imageURL} />}
+<meta name="twitter:card" content={imageURL ? "summary_large_image" : "summary"} />

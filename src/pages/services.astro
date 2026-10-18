@@ -1,20 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { IMAGES } from "../consts";
 
-// To add a photo to a section, put it in public/images/ and set `image`,
-// e.g. image: "/images/systems.webp". Without one, a light effect is shown.
+// Edit the three service categories here. Photos are set in src/consts.ts.
 const services = [
 	{
 		id: "light",
-		title: "Lighting & effects",
+		title: "Lighting & LED",
 		glow: "glow-1",
-		image: "",
+		image: IMAGES.lighting,
 		intro:
-			"Hands-on support for anything that emits light, across live events, film and broadcast. I can join your crew for a single day or look after a department for the full run.",
+			"Hands-on support for anything that emits light. I can join your crew for a single day or look after a department for the full run.",
 		items: [
-			"Rigging, focusing and maintaining lighting and LED fixtures",
-			"LED screens, video walls and pixel-mapped elements",
-			"Special and visual effects, from atmospherics to practical effects",
+			"Rigging, focusing and maintaining lighting fixtures and LED screens",
 			"Programming and operating on site",
 			"Fault-finding and support throughout the production",
 		],
@@ -23,30 +21,26 @@ const services = [
 		id: "systems",
 		title: "Networks, RF & power",
 		glow: "glow-2",
-		image: "",
+		image: IMAGES.systems,
 		intro:
-			"The systems that connect every department. Built to be stable and scalable, and documented so that everyone knows how it works.",
+			"The systems that connect every department, built to be stable, scalable and clearly documented.",
 		items: [
-			"IP networks for lighting, video, audio and comms",
-			"Data distribution and interfacing between different systems",
+			"IP networks, data distribution and internet connectivity",
 			"RF spectrum surveys, coordination and licensing",
-			"Fixed-line and bonded internet connections",
-			"Temporary power distribution, inspection and testing to BS 7671 and BS 7909",
-			"Monitoring and troubleshooting on site",
+			"Temporary power distribution, tested to BS 7671 and BS 7909",
 		],
 	},
 	{
 		id: "planning",
 		title: "Design & planning",
 		glow: "glow-3",
-		image: "",
+		image: IMAGES.planning,
 		intro:
 			"Where it helps, I can be involved before load-in, so that what arrives on site works as intended.",
 		items: [
 			"System design and technical consultation",
-			"Pre-production prep and equipment planning",
-			"Power planning and paperwork",
-			"Documentation that the crew on site can actually use",
+			"Pre-production prep, equipment and power planning",
+			"Clear documentation for the crew on site",
 		],
 	},
 ];
@@ -54,25 +48,22 @@ const services = [
 
 <BaseLayout
 	title="Services"
-	description="Hands-on lighting, LED, SFX and visual effects support, plus IP networking, RF coordination, design and planning for live events, film and broadcast."
+	description="Hands-on lighting and LED support, IP networking, RF coordination and power, plus design and planning, for live events, film and broadcast."
 >
 	<section class="page-top">
 		<div class="container">
 			<span class="eyebrow">Services</span>
 			<h1>Hands-on, from rig to <span class="gradient-text">show</span>.</h1>
 			<p class="lead">
-				Most of my work is on site as part of your crew. Design and planning are available too, for productions that need them.
+				Most of my work is on site as part of your crew, across live events, film and broadcast in the UK and Europe. Design and planning are available too.
 			</p>
-			<nav class="jump" aria-label="Services on this page">
-				{services.map((s) => <a href={`#${s.id}`} class="button ghost">{s.title}</a>)}
-			</nav>
 		</div>
 	</section>
 
 	{
 		services.map((s, i) => (
 			<section id={s.id}>
-				<div class={`container split ${i % 2 ? "flip" : ""}`}>
+				<div class:list={["container", "split", { flip: i % 2 }]}>
 					<div>
 						<h2>{s.title}</h2>
 						<div class="divider" />
@@ -93,36 +84,15 @@ const services = [
 		))
 	}
 
-	<section>
-		<div class="container narrow sectors">
-			<h2>Where I work</h2>
-			<div class="divider"></div>
-			<p>
-				<strong>Live events:</strong> concerts, festivals, corporate and outdoor events.<br />
-				<strong>Film:</strong> commercials, features and independent productions.<br />
-				<strong>Broadcast:</strong> studio and outside broadcast.
-			</p>
-			<p>Based in the UK and available across Europe.</p>
-			<div class="actions">
-				<a href="/contact" class="button">Get in touch</a>
-			</div>
+	<section class="cta">
+		<div class="container">
+			<p>Got a production coming up?</p>
+			<a href="/contact" class="button">Get in touch</a>
 		</div>
 	</section>
 </BaseLayout>
 
 <style>
-	.jump {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-		margin-top: 2rem;
-	}
-
-	.jump .button {
-		font-size: 0.9rem;
-		padding: 0.6rem 1.2rem;
-	}
-
 	section[id] {
 		padding: 3.5rem 0;
 	}
@@ -138,9 +108,9 @@ const services = [
 		order: 2;
 	}
 
-	/* Image panel, or a stage-light effect when there is no image */
+	/* Photo panel, or a stage-light placeholder when no photo is set */
 	.visual {
-		min-height: 320px;
+		min-height: 300px;
 		border-radius: var(--radius);
 		border: 1px solid var(--border);
 		background-color: #111219;
@@ -150,6 +120,15 @@ const services = [
 		background-size: cover;
 		background-position: center;
 		opacity: 0.85;
+	}
+
+	.cta {
+		text-align: center;
+	}
+
+	.cta p {
+		font-size: 1.15rem;
+		color: var(--text);
 	}
 
 	@media (max-width: 760px) {
