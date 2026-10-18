@@ -5,14 +5,15 @@ import sitemap from "@astrojs/sitemap";
 
 import cloudflare from "@astrojs/cloudflare";
 
+// Pages kept out of the sitemap while they're hidden. Remove an entry to list it.
+const hidden = ["/blog", "/indev"];
+
 // https://astro.build/config
 export default defineConfig({
 	site: "https://stangroom.uk",
 	integrations: [
 		mdx(),
-		// The blog and the in-development homepage are hidden for now,
-		// so keep them out of the sitemap.
-		sitemap({ filter: (page) => !page.includes("/blog") && !page.includes("/indev") }),
+		sitemap({ filter: (page) => !hidden.some((path) => page.includes(path)) }),
 	],
 	// Old addresses that now live elsewhere.
 	redirects: {

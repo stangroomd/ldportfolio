@@ -1,6 +1,6 @@
 // Site-wide details. Change them here and every page updates.
 
-export const SITE_TITLE = "Stangroom";
+export const SITE_TITLE = "stangroom.uk";
 export const SITE_DESCRIPTION =
 	"Freelance lighting and LED technician, with IP networking, RF and power systems support, for live events, film and broadcast across the UK and Europe.";
 
@@ -15,7 +15,7 @@ export const HOME = "/indev";
 
 // Photos. Put the file in public/images/ and enter its path here,
 // e.g. hero: "/images/hero.webp". Leave a path empty ("") to show the
-// light-effect placeholder instead.
+// stage-light placeholder instead.
 export const IMAGES = {
 	hero: "", // homepage banner; also used when the site is shared on social media
 	lighting: "", // Services: Lighting & LED
