@@ -1,79 +1,34 @@
 ---
-const { title } = Astro.props;
+// Every page uses this layout: it adds the <head>, background glow,
+// navigation bar and footer. Pages only supply their own content.
+import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	noindex?: boolean;
+}
+
+const props = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+<!doctype html>
+<html lang="en-GB">
+	<head>
+		<BaseHead {...props} />
+	</head>
+	<body>
+		<div class="blob one" aria-hidden="true"></div>
+		<div class="blob two" aria-hidden="true"></div>
+		<div class="blob three" aria-hidden="true"></div>
 
-    <style>
-      :root {
-        --bg: #0b0c10;
-        --text: #eaeaf0;
-        --muted: #9aa0a6;
-
-        --accent1: #7c5cff;
-        --accent2: #00d4ff;
-        --accent3: #ff4ecd;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        overflow-x: hidden; /* FIX: stops navbar spill */
-      }
-
-      main {
-        position: relative;
-        z-index: 1;
-      }
-
-      /* BACKGROUND BLOBS (shared) */
-      .blob {
-        position: fixed;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.3;
-        z-index: 0;
-      }
-
-      .blob.one { background: var(--accent1); top: -100px; left: -100px; }
-      .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
-      .blob.three { background: var(--accent3); top: 50%; left: 60%; }
-    </style>
-  </head>
-
-  <body>
-    <!-- BLOBS -->
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
-
-    <!-- NAVBAR SLOT -->
-    <slot name="navbar" />
-
-    <!-- PAGE CONTENT -->
-    <main>
-      <slot />
-    </main>
-
-    <!-- FOOTER SLOT -->
-    <slot name="footer" />
-  </body>
+		<Navbar />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
 </html>

@@ -7,8 +7,17 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://example.com",
-	integrations: [mdx(), sitemap()],
+	site: "https://stangroom.uk",
+	integrations: [
+		mdx(),
+		// The blog is hidden for now, so keep it out of the sitemap.
+		sitemap({ filter: (page) => !page.includes("/blog") }),
+	],
+	// Old addresses that now live elsewhere.
+	redirects: {
+		"/indev": "/services",
+		"/sectors": "/services",
+	},
 	adapter: cloudflare({
 		platformProxy: {
 			enabled: true,

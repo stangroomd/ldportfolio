@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// To add a photo to a section, put it in public/images/ and set `image`,
+// e.g. image: "/images/systems.webp". Without one, a light effect is shown.
+const services = [
+	{
+		id: "light",
+		title: "Lighting & effects",
+		glow: "glow-1",
+		image: "",
+		intro:
+			"Hands-on support for anything that emits light, across live events, film and broadcast. I can join your crew for a single day or look after a department for the full run.",
+		items: [
+			"Rigging, focusing and maintaining lighting and LED fixtures",
+			"LED screens, video walls and pixel-mapped elements",
+			"Special and visual effects, from atmospherics to practical effects",
+			"Programming and operating on site",
+			"Fault-finding and support throughout the production",
+		],
+	},
+	{
+		id: "systems",
+		title: "Networks, RF & power",
+		glow: "glow-2",
+		image: "",
+		intro:
+			"The systems that connect every department. Built to be stable and scalable, and documented so that everyone knows how it works.",
+		items: [
+			"IP networks for lighting, video, audio and comms",
+			"Data distribution and interfacing between different systems",
+			"RF spectrum surveys, coordination and licensing",
+			"Fixed-line and bonded internet connections",
+			"Temporary power distribution, inspection and testing to BS 7671 and BS 7909",
+			"Monitoring and troubleshooting on site",
+		],
+	},
+	{
+		id: "planning",
+		title: "Design & planning",
+		glow: "glow-3",
+		image: "",
+		intro:
+			"Where it helps, I can be involved before load-in, so that what arrives on site works as intended.",
+		items: [
+			"System design and technical consultation",
+			"Pre-production prep and equipment planning",
+			"Power planning and paperwork",
+			"Documentation that the crew on site can actually use",
+		],
+	},
+];
+---
+
+<BaseLayout
+	title="Services"
+	description="Hands-on lighting, LED, SFX and visual effects support, plus IP networking, RF coordination, design and planning for live events, film and broadcast."
+>
+	<section class="page-top">
+		<div class="container">
+			<span class="eyebrow">Services</span>
+			<h1>Hands-on, from rig to <span class="gradient-text">show</span>.</h1>
+			<p class="lead">
+				Most of my work is on site as part of your crew. Design and planning are available too, for productions that need them.
+			</p>
+			<nav class="jump" aria-label="Services on this page">
+				{services.map((s) => <a href={`#${s.id}`} class="button ghost">{s.title}</a>)}
+			</nav>
+		</div>
+	</section>
+
+	{
+		services.map((s, i) => (
+			<section id={s.id}>
+				<div class={`container split ${i % 2 ? "flip" : ""}`}>
+					<div>
+						<h2>{s.title}</h2>
+						<div class="divider" />
+						<p>{s.intro}</p>
+						<ul>
+							{s.items.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</div>
+					<div
+						class={`visual ${s.glow}`}
+						style={s.image ? `background-image: url('${s.image}')` : undefined}
+						aria-hidden="true"
+					/>
+				</div>
+			</section>
+		))
+	}
+
+	<section>
+		<div class="container narrow sectors">
+			<h2>Where I work</h2>
+			<div class="divider"></div>
+			<p>
+				<strong>Live events:</strong> concerts, festivals, corporate and outdoor events.<br />
+				<strong>Film:</strong> commercials, features and independent productions.<br />
+				<strong>Broadcast:</strong> studio and outside broadcast.
+			</p>
+			<p>Based in the UK and available across Europe.</p>
+			<div class="actions">
+				<a href="/contact" class="button">Get in touch</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.jump {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+
+	.jump .button {
+		font-size: 0.9rem;
+		padding: 0.6rem 1.2rem;
+	}
+
+	section[id] {
+		padding: 3.5rem 0;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 1.2fr 1fr;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	.split.flip > :first-child {
+		order: 2;
+	}
+
+	/* Image panel, or a stage-light effect when there is no image */
+	.visual {
+		min-height: 320px;
+		border-radius: var(--radius);
+		border: 1px solid var(--border);
+		background-color: #111219;
+		background-image:
+			radial-gradient(ellipse 30% 80% at 30% 0%, var(--glow-solid) 0%, transparent 70%),
+			radial-gradient(ellipse 25% 70% at 70% 0%, var(--glow-solid) 0%, transparent 70%);
+		background-size: cover;
+		background-position: center;
+		opacity: 0.85;
+	}
+
+	@media (max-width: 760px) {
+		.split {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.split.flip > :first-child {
+			order: 0;
+		}
+		.visual {
+			min-height: 180px;
+		}
+	}
+</style>

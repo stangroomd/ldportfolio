@@ -1,64 +1,39 @@
-# Astro Starter Kit: Blog
+# stangroom.uk
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+Website for stangroom.uk, built with [Astro](https://astro.build) and deployed on Cloudflare.
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## Editing the site
 
-<!-- dash-content-start -->
+| To change… | Edit |
+| :-- | :-- |
+| Email, phone, site description | `src/consts.ts` |
+| Colours and fonts | `src/styles/global.css` (the `:root` block at the top) |
+| Menu links | `src/components/Navbar.astro` |
+| Footer links | `src/components/Footer.astro` |
+| Home page | `src/pages/index.astro` |
+| Services (text, bullet points, photos) | the list at the top of `src/pages/services.astro` |
+| Policy PDFs | add the file to `public/policies/`, then add a line to `src/pages/reports-policies.astro` |
+| Blog posts | `src/content/blog/` (copy `example-post.md` to start a new one) |
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+Each page in `src/pages/` becomes a web address: `contact.astro` → `/contact`.
 
-Features:
+### Images
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
+Put images in `public/images/` and refer to them as `/images/name.webp`. WebP or JPG at around 1600–2000px wide keeps pages fast.
 
-<!-- dash-content-end -->
+### Blog
 
-## Getting Started
+The blog is hidden for now. It isn't in the menu, it's left out of the sitemap, and search engines are asked not to index it. You can still visit `/blog` directly to try it out. To make it public:
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+1. Add `{ href: "/blog", label: "Blog" }` to the list in `src/components/Navbar.astro`.
+2. Remove `noindex` from `src/pages/blog/index.astro` and `src/layouts/BlogPost.astro`.
+3. Remove the `filter` line from `sitemap(...)` in `astro.config.mjs`.
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
-```
+## Commands
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
-
-## 🚀 Project Structure
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                           | Action                                           |
-| :-------------------------------- | :----------------------------------------------- |
-| `npm install`                     | Installs dependencies                            |
-| `npm run dev`                     | Starts local dev server at `localhost:4321`      |
-| `npm run build`                   | Build your production site to `./dist/`          |
-| `npm run preview`                 | Preview your build locally, before deploying     |
-| `npm run astro ...`               | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help`         | Get help using the Astro CLI                     |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare        |
-| `npm wrangler tail`               | View real-time logs for all Workers              |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+| Command | Action |
+| :-- | :-- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Local preview at `localhost:4321` |
+| `npm run build` | Build the site into `./dist/` |
+| `npm run deploy` | Deploy to Cloudflare |

@@ -1,121 +1,37 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout title="Mission Statement | Stangroom UK">
+<BaseLayout title="Mission Statement">
+	<section class="page-top">
+		<div class="container narrow">
+			<span class="eyebrow">About</span>
+			<h1>Mission statement</h1>
+			<div class="divider"></div>
 
-  <Fragment slot="navbar">
-    <Navbar />
-  </Fragment>
+			<p class="lead">
+				Your production is built to stand on its own, with its own demands, pressures and identity.
+			</p>
 
-  <!-- BACKGROUND BLOBS -->
-  <div class="blob one"></div>
-  <div class="blob two"></div>
-  <div class="blob three"></div>
+			<p>
+				Working closely with producers, designers and technical teams, the focus stays on carrying that vision through to a dependable, well-executed outcome. Decisions are made with an awareness of real-world constraints, time pressure and the need for reliability in live environments.
+			</p>
 
-  <main>
+			<p>
+				All work is delivered to an exemplary standard of safety and compliance, making effective use of modern tools and techniques. Complexity is only introduced where it improves clarity, reliability or performance.
+			</p>
 
-    <!-- CONTENT -->
-    <section>
-      <h1>Mission Statement</h1>
-      <div class="divider"></div>
+			<p>
+				Systems are shaped around the specific requirements of each production. The latest technologies and practices are integrated across departments and existing systems to reduce friction between disciplines, with clear and consistent communication from design through to delivery.
+			</p>
 
-      <p>
-        Your production is built to stand on its own, with its own demands, pressures, and identity.
-      </p>
+			<p>
+				Alongside production work, the <a href="/illuminating-futures">Illuminating Futures</a> programme helps reduce barriers to entry for young people, through shadowing opportunities on live productions. That commitment extends to supporting equality and inclusion across the industry, as set out in the <a href="/reports-policies">reports and policies</a>.
+			</p>
 
-      <p>
-        Working closely with producers, designers, and technical teams, the focus stays on carrying that vision through to a dependable and well-executed outcome. Decisions are made with awareness of real-world constraints, time pressure, and the need for dependable outcomes in live environments.
-      </p>
-
-      <p>
-        All solutions are delivered to an exemplary standard of safety and compliance, with reliable execution and effective use of modern tools and techniques to support the intended outcome. Complexity is only introduced where it improves clarity, reliability, or performance.
-      </p>
-
-      <p>
-        Specialising in bespoke system design shaped around the specific requirements of each production, the latest technologies and practices are integrated across departments and existing systems to reduce friction between disciplines, maintaining clear and consistent communication from design through to delivery, and delivering a coherent and fully realised final production.
-      </p>
-
-      <p>
-        Alongside production work, involvement in the <strong>Illuminating Futures</strong> programme supports reducing barriers to entry for young people entering the industry, through structured shadowing opportunities within live production environments. 
-        <a href="/illuminating-futures">Learn more here</a>.
-      </p>
-
-      <p>
-        The priority remains consistent: that production intent is carried through clearly into reality.
-      </p>
-
-      <p>
-        Commitment also extends to supporting equality and inclusion within the industry, with further detail outlined in the 
-        <a href="/reports-policies">reports and policies</a>.
-      </p>
-
-
-    </section>
-
-    <Fragment slot="footer">
-      <Footer />
-    </Fragment>
-
-  </main>
-
-  <style>
-    :global(*) {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* BLOBS */
-    .blob {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.3;
-      z-index: 0;
-    }
-
-    .blob.one { background: var(--accent1); top: -100px; left: -100px; }
-    .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
-    .blob.three { background: var(--accent3); top: 50%; left: 60%; }
-
-    /* CONTENT */
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-    }
-
-    section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    section p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    .divider {
-      width: 60px;
-      height: 4px;
-      margin: 1rem 0 2rem;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-    }
-  </style>
-
+			<p>
+				The priority remains the same: that production intent is carried through clearly into reality.
+			</p>
+		</div>
+	</section>
 </BaseLayout>

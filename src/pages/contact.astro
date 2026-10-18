@@ -1,146 +1,77 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import { EMAIL, PHONE, PHONE_LINK, AREA } from "../consts";
 ---
 
-<BaseLayout title="Contact | Stangroom UK">
+<BaseLayout title="Contact" description="Get in touch about lighting, effects or systems support for your next production.">
+	<section class="page-top">
+		<div class="container split">
+			<div>
+				<span class="eyebrow">Contact</span>
+				<h1>Let's make your vision <span class="gradient-text">a reality</span>.</h1>
+				<p class="lead">
+					Tell me about your production: what it is, where, and when. I'll get back to you as soon as I can.
+				</p>
+				<p class="details">
+					<a href={`mailto:${EMAIL}`}>{EMAIL}</a><br />
+					<a href={`tel:${PHONE_LINK}`}>{PHONE}</a><br />
+					{AREA}
+				</p>
+			</div>
 
-  <Fragment slot="navbar">
-    <Navbar />
-  </Fragment>
+			<form action="https://formspree.io/f/xdaynbyn" method="POST" class="card glow-2">
+				<div>
+					<label for="name">Name</label>
+					<input id="name" type="text" name="name" autocomplete="name" required />
+				</div>
+				<div>
+					<label for="email">Email</label>
+					<input id="email" type="email" name="email" autocomplete="email" required />
+				</div>
+				<div>
+					<label for="message">Message</label>
+					<textarea id="message" name="message" placeholder="Production, dates, location and what you need" required></textarea>
+				</div>
 
-  <!-- BLOBS -->
-  <div class="blob one"></div>
-  <div class="blob two"></div>
-  <div class="blob three"></div>
+				<!-- Spam trap: hidden from people, filled in by bots -->
+				<input type="text" name="_gotcha" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+				<input type="hidden" name="_subject" value="New enquiry from stangroom.uk" />
 
-  <main>
-
-    <!-- HERO -->
-    <div class="hero">
-      <h1>Contact</h1>
-
-      <p>
-        Get in touch to make your vision a reality. 
-      </p>
-    </div>
-
-    <!-- FORM -->
-    <div class="form-wrapper">
-
-      <form action="https://formspree.io/f/xdaynbyn" method="POST">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-        <textarea name="message" placeholder="Your message" required></textarea>
-
-        <input type="hidden" name="_subject" value="New Contact Form Submission" />
-
-        <button type="submit">Send Message</button>
-      </form>
-
-    </div>
-
-    <Fragment slot="footer">
-      <Footer />
-    </Fragment>
-
-  </main>
-
-  <style>
-    :global(*) {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* BLOBS */
-    .blob {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.3;
-      z-index: 0;
-    }
-
-    .blob.one { background: var(--accent1); top: -100px; left: -100px; }
-    .blob.two { background: var(--accent2); bottom: -150px; right: -100px; }
-    .blob.three { background: var(--accent3); top: 50%; left: 60%; }
-
-    /* HERO (no padding-top — consistent with system) */
-    .hero {
-      text-align: center;
-      padding: 6rem 2rem 3rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    /* FORM */
-    .form-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    textarea {
-      min-height: 160px;
-      resize: vertical;
-    }
-
-    button {
-      padding: 0.9rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #fff;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-      transition: transform 0.2s ease;
-    }
-
-    button:hover {
-      transform: scale(1.03);
-    }
-  </style>
-
+				<button type="submit" class="button">Send message</button>
+			</form>
+		</div>
+	</section>
 </BaseLayout>
+
+<style>
+	.split {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: start;
+	}
+
+	.details {
+		margin-top: 2rem;
+	}
+
+	.details a {
+		color: var(--text);
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	form .button {
+		align-self: flex-start;
+	}
+
+	@media (max-width: 800px) {
+		.split {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
